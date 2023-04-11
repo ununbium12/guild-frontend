@@ -41,3 +41,10 @@ body{
   display: block;
   clear: both;
 }
+
+/*푸터*/
+.footer-frame{
+  width: 100%;
+  position : absolute;
+  bottom : 0;
+}
