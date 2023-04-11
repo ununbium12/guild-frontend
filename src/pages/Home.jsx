@@ -9,8 +9,12 @@ const Home = () => {
 
   return(
     <div className="HomeMain">
+<<<<<<< HEAD
       <h1>더 그레이트 마제스티 글로리 오브 더 탑 팀장 정우성</h1>
       <List />
+=======
+      <h1>더 그레이트 마제스티 글로리 오브 더 탑 정다훈</h1>
+>>>>>>> cfcf038bc9a05ac1b8a85e079f8ac1d580195298
     </div>
   );
 };
