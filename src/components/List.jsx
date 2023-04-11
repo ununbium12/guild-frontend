@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import Item from "./Item";
+import NewPost from "../pages/modals/NewPost";
 import MyButton from "./MyButton";
 import Axios from 'axios';
 
@@ -10,9 +10,18 @@ const sortOptionList = [
 ]
 
 const List = () => {
-  const navigate = useNavigate();
+  const [isOpen, setOpen] = useState(false);
+  const [isItemOpen, setItemOpen] = useState(false);
   const [sortType, setSortType] = useState('latest');
-  const [List, setList] = useState([]);
+  const [list, setList] = useState([]);
+
+  const onClick = () => {
+    setOpen(true);
+  };
+
+  const onItemClick = () => {
+    setItemOpen(true);
+  }
 
   useEffect(() => {
     if (sortType === 'latest') {
@@ -59,13 +68,13 @@ const List = () => {
     }
   }
 
-  if (List == null) {
+  if (list == null) {
     return (
       <div>로딩</div>
     );
   } else {
   return (
-    <div className="BlogList">
+    <div className="GuildList">
       <div className="menu_wrapper">
         <div className="left_col">
           <select
@@ -84,11 +93,14 @@ const List = () => {
           <MyButton 
             type = {'positive'}
             text={'새 개시물 쓰기'}
-            onClick={() => navigate('/NewPost')}
+            onClick={onClick}
           />
+          {isOpen && (<NewPost setOpen={setOpen} />)}
         </div>
       </div>
-      {List.map((it) => (<Item key={it.idx} {...it} />))}
+      <div className="listCotents" onClick={onItemClick}>
+        {isItemOpen && list.map((it) => (<Item key={it.idx} {...it} />))}
+      </div>
     </div>
   ); }
 };
