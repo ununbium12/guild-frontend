@@ -7,7 +7,7 @@ const Home = () => {
 
   return(
     <div className="HomeMain">
-      <h1>더 그레이트 마제스티 글로리 오브 더 탑 팀장 정우성</h1>
+      <h1>더 그레이트 마제스티 글로리 오브 더 탑 정다훈</h1>
     </div>
   );
 };
