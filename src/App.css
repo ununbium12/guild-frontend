@@ -4,8 +4,10 @@ body{
 .pages{
   background-color: #FAFAFA;
 }
+
+/*영역 확인용 css*/
 .container{
-  border: 2px solid;
+  border: 1px solid;
 }
 
 /*마이페이지*/
