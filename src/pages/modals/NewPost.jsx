@@ -1,5 +1,7 @@
-import React from "react";
+import React, {useState} from "react";
 import '../../App.css';
+import axios from "axios";
+import Editor from "../../components/Editor";
 
 function NewPost ({setOpen}) {
   
@@ -9,13 +11,13 @@ function NewPost ({setOpen}) {
   };
 
   return (
-    <div className="modelbox">
-      <div className="modelContent">
+    <div className="modelbox" onClick={handleClose}>
+      <div className="modelContent" onClick={(e) => e.stopPropagation()}>
         <button className="closeModel" onClick={handleClose}>
           X
         </button>
         <div className="contents">
-          <p>현재 모달 창이 열렸습니다.</p>
+          <Editor/>
         </div>
       </div>
     </div>

@@ -52,7 +52,7 @@ body{
 }
 
 /* model's */
-
+/*모달 영역(모달박스+회색영역)*/
 .modelbox {
   position: fixed;
   width: 100%;
@@ -65,6 +65,7 @@ body{
   z-index: 9999;
 }
 
+/*모달박스*/
 .modelbox > .modelContent {
   width: 50%;
   height: 90%;
@@ -93,4 +94,37 @@ body{
   font-size: 30px;
   font-weight: 600;
   margin-bottom: 60px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.modal>form> input,
+textarea,
+select {
+  margin-bottom: 10px;
+  border: 2px solid black;
+  border-radius: 5px;
+  padding: 10px;
+  
+}
+
+button[type="submit"] {
+  background-color: blue;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background-color: darkblue;
 }
