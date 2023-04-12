@@ -98,16 +98,11 @@ const List = () => {
           {isOpen && (<NewPost setOpen={setOpen} />)}
         </div>
       </div>
-      <div className="listCotents">
-        {list.map((it) => (
-          <div key={it.idx} onClick={onItemClick}>
-            {it.title}
-          </div>
-        ))}
-        {isItemOpen && <Item key={it.idx} {...it} setItemOpen={setItemOpen} />}
+      <div className="listCotents" onClick={onItemClick}>
+        {isItemOpen && list.map((it) => (<Item key={it.idx} {...it} />))}
       </div>
     </div>
-  );}
+  ); }
 };
 
 export default List;
