@@ -1,12 +1,13 @@
 import { useNavigate } from "react-router-dom";
 import MyButton from "./MyButton";
 import '../App.css';
+import React from "react";
 
-const Item = ({ idx, content, writeDate, title, userId, setOpenList}) => {
+function Item ({ idx, content, writeDate, title, userId, setItemOpen}) {
 
   // 모달 끄기
   const handleClose = () => {
-    setOpenList(false);
+    setItemOpen(false);
   };
   
   let urId = localStorage.getItem('userId');
