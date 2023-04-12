@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Item from "./Item";
 import NewPost from "../pages/modals/NewPost";
+import Post from "../pages/modals/Post";
 import MyButton from "./MyButton";
 import Axios from 'axios';
 
@@ -9,7 +10,7 @@ const sortOptionList = [
   {value : "oldest", name : "오래된 순"},
 ]
 
-const List = () => {
+const List = ({}) => {
   const [isOpen, setOpen] = useState(false);
   const [isItemOpen, setItemOpen] = useState(false);
   const [sortType, setSortType] = useState('latest');
@@ -98,9 +99,10 @@ const List = () => {
           {isOpen && (<NewPost setOpen={setOpen} />)}
         </div>
       </div>
-      <div className="listCotents" onClick={onItemClick}>
-        {isItemOpen && list.map((it) => (<Item key={it.idx} {...it} />))}
+      <div className="listCotents">
+        {list.map((it) => (<Item key={it.idx} {...it} onClick={onItemClick}/>))}
       </div>
+      {isItemOpen && (<Item setItemOpen={setItemOpen} />)}
     </div>
   ); }
 };
