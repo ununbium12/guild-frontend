@@ -1,53 +1,53 @@
-import { useNavigate } from "react-router-dom";
+import React, { useState } from "react";
 import MyButton from "./MyButton";
+import Post from "../pages/modals/Post";
 import '../App.css';
+import EditPost from "../pages/modals/EditPost";
 
-function Item ({ idx, content, writeDate, title, userId, setOpenList}) {
+function Item (props) {
 
-  // 모달 끄기
-  const handleClose = () => {
-    setOpenList(false);
+  const [isPostOpen, setPostOpen] = useState(false);
+  const [isEditPostOpen, setEditPostOpen] = useState(false);
+
+  const onPostClick = () => {
+    setPostOpen(true);
   };
+
+  const onEditPostClick = () => {
+    setEditPostOpen(true);
+  };
+
+  const board = props.board;
+
+  const tags = props.tags;
+  const tagNames = tags.map(tag => tag.tagName).join(', ');
+  console.log(tagNames);
   
   let urId = localStorage.getItem('userId');
 
-  const navigate = useNavigate();
+  const strDate = new Date(parseInt(board.writeDate)).toLocaleDateString();
 
-  const strDate = new Date(parseInt(writeDate)).toLocaleDateString();
-
-  const goDeatail = () => {
-    navigate(`/post/${idx}`);
-  };
-
-  const goEdit = () => {
-    navigate(`/editPost/${idx}`);
-  };
-
-    return (
-      <div className="modelbox">
-        <div className="modelContent">
-          <button className="closeModel" onClick={handleClose}>
-            X
-          </button>
-          <div className="contents">
-            <div className="Item">
-              <div onClick={goDeatail} className="info_wrapper">
-                <div className="post_date">{strDate}</div>
-                <div className="post_title">{title}</div>
-                <div className="post_content_preview">{content.slice(0, 25)}</div>
-              </div>
-              <div className="btn_wrapper">
-                {urId === userId ?
-                  <MyButton
-                    onClick={goEdit}
-                    text={"수정하기"}
-                  /> : ""}
-              </div>
-            </div>
-          </div>
+  return (
+    <div className="contents">
+      <div className="Item">
+        <div onClick={onPostClick} className="info_wrapper">
+          <div className="post_date">{strDate}</div>
+          <div className="post_title">{board.title}</div>
+          <div className="post_content_preview">{board.content.slice(0, 25)}</div>
+          <div className="post_tegs">{tagNames}</div>
         </div>
+        {isPostOpen && (<Post setPostOpen={setPostOpen} />)}
+        <div className="btn_wrapper">
+          {urId === board.userId ?
+            <MyButton
+              onClick={onEditPostClick}
+              text={"수정하기"}
+            /> : ""}
+        </div>
+        {isEditPostOpen && (<EditPost setEditPostOpen={setEditPostOpen} />)}
       </div>
-    );
+    </div>
+  );
 };
 
 export default Item;
