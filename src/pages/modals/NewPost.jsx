@@ -1,13 +1,12 @@
-import React, {useState} from "react";
-import '../../App.css';
-import axios from "axios";
+import "../../App.css";
+import Axios from "axios";
 import Editor from "../../components/Editor";
 
-function NewPost ({setOpen}) {
-  
-  // 모달 끄기
+function NewPost(props) {
+  Axios.defaults.withCredentials = true;
+
   const handleClose = () => {
-    setOpen(false);
+    props.setOpen(false);
   };
 
   return (
@@ -17,7 +16,7 @@ function NewPost ({setOpen}) {
           X
         </button>
         <div className="contents">
-          <Editor/>
+          <Editor />
         </div>
       </div>
     </div>

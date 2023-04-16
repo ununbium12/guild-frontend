@@ -1,14 +1,13 @@
 import React from "react";
-import '../../App.css';
+import "../../App.css";
 
-function EditPost (props) {
-
- // 모달 끄기
+function EditPost(props) {
+  // 모달 끄기
   const handleClose = () => {
-    props.setPostOpen(true);
+    props.setEditPostOpen(false);
   };
 
-  return(
+  return (
     <div className="modelbox">
       <div className="modelContent">
         <button className="closeModel" onClick={handleClose}>
@@ -20,6 +19,6 @@ function EditPost (props) {
       </div>
     </div>
   );
-};
+}
 
 export default EditPost;

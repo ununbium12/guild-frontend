@@ -1,6 +1,5 @@
 import React from "react";
 import Axios from "axios";
-import MyButton from "../components/MyButton";
 import List from "../components/List";
 
 const Home = () => {

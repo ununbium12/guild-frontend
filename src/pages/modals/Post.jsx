@@ -2,9 +2,12 @@ import React, { useState } from "react";
 import '../../App.css';
 import EditPost from "./EditPost";
 import MyButton from "../../components/MyButton";
+import Axios from "axios";
 
 function Post(props) {
   const [isEditPostOpen, setEditPostOpen] = useState(false);
+
+  Axios.defaults.withCredentials = true; //axios 사용 컴포넌트 마다 한번씩 붙여넣을 것
 
   const handleClose = () => {
     props.setPostOpen(false);
