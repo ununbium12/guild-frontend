@@ -36,7 +36,7 @@ function Item (props) {
           <div className="post_content_preview">{board.content.slice(0, 25)}</div>
           <div className="post_tegs">{tagNames}</div>
         </div>
-        {isPostOpen && (<Post setPostOpen={setPostOpen} />)}
+        {isPostOpen && (<Post setPostOpen={setPostOpen} board={board.boardId} />)}
         <div className="btn_wrapper">
           {urId === board.userId ?
             <MyButton
