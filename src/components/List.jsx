@@ -78,12 +78,6 @@ const List = () => {
             {isOpen && (<NewPost setOpen={setOpen} />)}
           </div>
         </div>
-<<<<<<< HEAD
-=======
-        <div className="listCotents">
-          {list.map((it, idx) => (<Item key={it.board.boardId} {...it} />))}
-        </div>
->>>>>>> 96cebe242209f019cea0ec8d0147350c9ac0abe3
       </div>
     );
   }
