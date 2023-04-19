@@ -11,6 +11,8 @@ const Editor = (props) =>{
   const [content, setContent] = useState("");
   const [category, setCategory] = useState("");
   const [categoryInputValue, setCategoryInputValue] = useState("");
+  
+  const idx = useParams().id;
 
   const handleTitleChange = (event) => {
     setTitle(event.target.value);
@@ -27,6 +29,22 @@ const Editor = (props) =>{
   const handleCategoryInputChange = (event) =>{
     setCategoryInputValue(event.target.value);
   };
+
+  useEffect(() => {
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+
+    if(idx !== undefined) {
+      Axios.get(`http://localhost:8080/api/boards/${idx}`, config) 
+        .then(res => {
+          setTitle(res.data.title, ...title);
+          setContent(res.data.content, ...content);
+        })
+    }
+  })
 
   const handleSubmit = (event) => {
     event.preventDefault();

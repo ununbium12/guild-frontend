@@ -31,7 +31,7 @@ const List = () => {
     } else {
       Axios.get(`http://localhost:8080/api/boards/list/ASC?page=0&size=10`)
         .then(res => {
-          setList(res.data.content);
+          setList(res.data);
         })
         .catch(err => {
           alert("에러가 발생했습니다.");
@@ -75,7 +75,7 @@ const List = () => {
           </div>
         </div>
         <div className="listCotents">
-          {list.map((it) => (<Item key={it.board.boardId} {...it}/>))}
+          {list.map((it, idx) => (<Item key={it.board.boardId} {...it} />))}
         </div>
       </div>
     );
