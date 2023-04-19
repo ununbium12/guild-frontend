@@ -1,6 +1,7 @@
 import MyButton from "./MyButton"
 import { useNavigate, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
+import '../App.css';
 
 const Header = () => {
   const navigate = useNavigate();
@@ -31,6 +32,12 @@ const Header = () => {
             onClick={handleClick}
             disabled={isMyPage}
           />
+          <div className="headerImg">
+            <img
+              src={process.env.PUBLIC_URL + `assets/headerImage.jpg`} 
+              alt="헤더사진"
+            />
+          </div>
         </div>
       </div>
     </header>

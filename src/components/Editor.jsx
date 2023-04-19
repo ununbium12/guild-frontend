@@ -2,6 +2,7 @@ import Axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useRef, useState, useEffect } from 'react';
 import Header from './Header';
+import '../App.css';
 
 
 
@@ -79,7 +80,7 @@ const Editor = (props) =>{
           </select>
         )}
       </div>
-          <button type="submit">Submit</button>
+          <button type="submit">작성완료</button>
         </form>
       </div>
     </div>

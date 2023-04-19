@@ -1,4 +1,5 @@
 import Axios from "axios";
+import '../App.css';
 
 const MyPage = () => {
 

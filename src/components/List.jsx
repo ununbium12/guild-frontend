@@ -3,6 +3,7 @@ import Item from "./Item";
 import NewPost from "../pages/modals/NewPost";
 import MyButton from "./MyButton";
 import Axios from 'axios';
+import '../App.css';
 
 const sortOptionList = [
   {value : "latest", name : "최신 순"},
@@ -51,6 +52,9 @@ const List = () => {
   } else {
     return (
       <div className="GuildList">
+        <div className="listCotents">
+          {list.map((it) => (<Item key={it.board.boardId} {...it}/>))}
+        </div>
         <div className="menu_wrapper">
           <div className="left_col">
             <select
@@ -73,9 +77,6 @@ const List = () => {
             />
             {isOpen && (<NewPost setOpen={setOpen} />)}
           </div>
-        </div>
-        <div className="listCotents">
-          {list.map((it) => (<Item key={it.board.boardId} {...it}/>))}
         </div>
       </div>
     );

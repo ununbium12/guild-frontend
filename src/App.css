@@ -5,10 +5,10 @@ body{
   background-color: #FAFAFA;
 }
 
-/*영역 확인용 css*/
+/*영역 확인용 css
 .container{
   border: 1px solid;
-}
+}*/
 
 /*마이페이지*/
 .profileCon{
@@ -69,7 +69,7 @@ body{
   width: 50%;
   height: 90%;
   border-radius: 15px;
-  background-color: #fff;
+  background-image: url('../public/assets/scroll.jpg');
   position: absolute;
   top: 50%;
   left: 50%;
@@ -95,24 +95,56 @@ body{
   margin-bottom: 60px;
 }
 
-form {
+/*버튼(button)*/
+.MyButton{
+  background-color: blue;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  cursor: pointer;
+}
+.MyButton:hover{
+  background-color: darkblue;
+}
+
+
+/*모달에딧(Editor)*/
+
+
+
+.modal form {
   display: flex;
   flex-direction: column;
 }
 
-label {
+.modal> label {
   font-weight: bold;
   margin-bottom: 5px;
 }
 
-.modal > form > input,
-textarea,
-select {
-  margin-bottom: 10px;
-  border: 2px solid black;
-  border-radius: 5px;
+.modal input,
+.modal textarea,
+.modal select {
   padding: 10px;
-  
+  border-radius: 5px;
+  border: none;
+  margin-top: 5px;
+  font-size: 16px;
+  background-color: #E0E0E0;
+}
+.modal input:hover{
+  background-color: white;
+  border: 1px solid black;
+}
+.modal textarea:hover{
+  background-color: white;
+  border: 1px solid black;
+}
+
+.modal select:hover{
+  background-color: white;
+  border: 1px solid black;
 }
 
 button[type="submit"] {
@@ -122,13 +154,48 @@ button[type="submit"] {
   border-radius: 5px;
   padding: 10px;
   cursor: pointer;
+  margin-top: 10px;
 }
 
 button[type="submit"]:hover {
   background-color: darkblue;
 }
 
-.info_wrapper {
-  border: 2px solid black;
-  text-align: center;
+/*헤더(header)*/
+.header_main{
+  width: 100%;
 }
+.headerImg{
+  width: 100%;
+  max-height: 300px;
+  padding-right: 100px;
+  overflow: hidden;
+}
+.headerImg img{
+  max-height: initial;
+  margin-top: -15%;
+}
+
+
+/*아이템(item)*/
+.info_wrapper {
+  text-align: left;
+  background-color: #FFCC99;
+  border-radius: 5%;
+  padding: 10px 5px;
+  margin: 10px 0px;
+}
+
+
+
+
+/*리스트(list)*/
+.GuildList{
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  border-radius: 5%;
+  padding: 0px 50px;
+}
+
+/*포스트(Post)*/
