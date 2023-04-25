@@ -67,12 +67,14 @@ function Post(props) {
             X
           </button>
           <div className="contents">
-            <div className="title"><h3>{boardTitle}</h3></div>
+            <div className="title">{boardTitle}</div>
             <div className="user_content">{boardContent}</div>
             <div className="users_total">이 방의 정원은 : {partyTotal} 입니다.</div>
-            {Tags.map((tag, index) => (
-            <span key={index} className="tag">#{tag.tagName} </span>
-            ))}
+            <div className="tags">
+              {Tags.map((tag, index) => (
+              <span key={index} className="tag">#{tag.tagName} </span>
+              ))}
+            </div>         
           </div>
           <div className="btn_wrapper">
             <MyButton onClick={onEditPostClick} text={"수정하기"} />

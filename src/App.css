@@ -67,9 +67,10 @@ body{
 /*모달박스*/
 .modelbox > .modelContent {
   width: 50%;
-  height: 90%;
+  height: 50%;
   border-radius: 15px;
-  background-image: url('../public/assets/scroll.jpg');
+  /*background-image: url('../public/assets/scroll.jpg');*/
+  background-color: whitesmoke;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -88,11 +89,37 @@ body{
   background-color: transparent;
 }
 
-.modelbox > .modelContent > .contents {
+.modelbox > .modelContent > .contents> .title {
   margin: 50px 30px;
   font-size: 30px;
   font-weight: 600;
   margin-bottom: 60px;
+}
+
+.modelbox > .modelContent > .contents> .user_content {
+  margin: 50px 30px;
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 60px;
+}
+.modelbox > .modelContent > .contents> .users_total {
+  margin: 0px 30px;
+  font-size: 15px;
+  font-weight: 600;
+}
+/*모달박스 태그 스타일*/
+.modelbox > .modelContent > .contents> .tags {
+  margin: 10px 30px;
+  font-size: 15px;
+  font-weight: 600;
+}
+.modelbox > .modelContent > .contents> .tags> .tag {
+  background-color: #FFCC00;
+  margin: 0px 10px
+}
+.modelbox > .modelContent > .btn_wrapper{
+  margin-left: 80%;
+  margin-top: 50px;
 }
 
 /*버튼(button)*/
@@ -163,7 +190,7 @@ button[type="submit"]:hover {
 
 /*헤더(header)*/
 .header_main{
-  width: 100%;
+  width: 80%;
 }
 .headerImg{
   width: 100%;
@@ -191,11 +218,14 @@ button[type="submit"]:hover {
 
 /*리스트(list)*/
 .GuildList{
-  width: 100%;
-  height: 100%;
+  width: 80%;
+  height: 80%;
   background-color: white;
   border-radius: 5%;
   padding: 0px 50px;
+}
+.listCotents{
+  padding-top: 20px;
 }
 
 /*포스트(Post)*/
