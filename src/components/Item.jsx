@@ -20,7 +20,7 @@ function Item (props) {
   const board = props.board;
 
   const tags = props.tags;
-  const tagNames = tags.map(tag => tag.tagName).join(', ');
+  const tagNames = tags.map(tag => "#" + tag.tagName).join(', ');
   console.log(tagNames);
   
   let urId = localStorage.getItem('userId');
