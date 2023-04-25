@@ -103,9 +103,12 @@ body{
   margin-bottom: 60px;
 }
 .modelbox > .modelContent > .contents> .users_total {
+  border-top: solid 1px #BAB6B6;
   margin: 0px 30px;
+  padding-top: 10px;
   font-size: 15px;
   font-weight: 600;
+
 }
 /*모달박스 태그 스타일*/
 .modelbox > .modelContent > .contents> .tags {
@@ -207,9 +210,9 @@ button[type="submit"]:hover {
 /*아이템(item)*/
 .Item> .info_wrapper {
   text-align: left;
-  background-color: #FFCC99;
-  border-radius: 5%;
-  padding: 10px 5px;
+  background-color: #E7FFC4;
+  border: solid 2px black;
+  padding: 10px 20px;
   margin: 10px 0px;
 }
 .Item> .info_wrapper> .post_title {
@@ -222,8 +225,8 @@ button[type="submit"]:hover {
   padding-bottom: 10px;
 }
 
-.Item> .info_wrapper> .post_tags {
-  
+.Item> .info_wrapper> .post_tegs {
+  padding-left: 10px;
 }
 
 
