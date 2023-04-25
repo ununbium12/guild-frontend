@@ -205,13 +205,27 @@ button[type="submit"]:hover {
 
 
 /*아이템(item)*/
-.info_wrapper {
+.Item> .info_wrapper {
   text-align: left;
   background-color: #FFCC99;
   border-radius: 5%;
   padding: 10px 5px;
   margin: 10px 0px;
 }
+.Item> .info_wrapper> .post_title {
+  font-size: 20px;
+  font-weight: 600;
+}
+.Item> .info_wrapper> .post_content_preview {
+  margin-bottom: 10px;
+  border-bottom: solid 1px black;
+  padding-bottom: 10px;
+}
+
+.Item> .info_wrapper> .post_tags {
+  
+}
+
 
 
 
