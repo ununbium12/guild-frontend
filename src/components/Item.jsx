@@ -20,7 +20,7 @@ function Item (props) {
   const board = props.board;
 
   const tags = props.tags;
-  const tagNames = tags.map(tag => tag.tagName).join(', ');
+  const tagNames = tags.map(tag => "#" + tag.tagName).join('  ');
   console.log(tagNames);
   
   let urId = localStorage.getItem('userId');
@@ -31,6 +31,7 @@ function Item (props) {
     <div className="contents">
       <div className="Item">
         <div onClick={onPostClick} className="info_wrapper">
+          
           <div className="post_date">{strDate}</div>
           <div className="post_title">{board.title}</div>
           <div className="post_content_preview">{board.content.slice(0, 25)}</div>

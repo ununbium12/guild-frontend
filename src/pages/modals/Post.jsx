@@ -3,11 +3,10 @@ import '../../App.css';
 import EditPost from "./EditPost";
 import MyButton from "../../components/MyButton";
 import Axios from "axios";
-import { useParams } from "react-router-dom";
 
 function Post(props) {
   const [isEditPostOpen, setEditPostOpen] = useState(false);
-  const [data, setData] = useState(null);
+  const [data, setData] = useState([]);
 
   Axios.defaults.withCredentials = true; //axios 사용 컴포넌트 마다 한번씩 붙여넣을 것
 
@@ -27,7 +26,8 @@ function Post(props) {
       if(res.data == null) {
         alert("생성되지 않은 개시물 입니다.");        
       }
-      setData(res.data);
+      setData([res.data]);
+      console.log(res.data)
     })
     .catch(err => {
       alert("에라가 발생했습니다.");
@@ -35,35 +35,57 @@ function Post(props) {
     });
   },[]);
 
+  // 첫 배열이 무조건 [] 공백으로 찍혀서 만약 배열이 빈 공백일 때는 문자열 공백을 넣어서 오류가 안나도록 안나오게 만들었다.
+  const boardTitle = data.length > 0 ? data[0].board.title : "";
+  const boardContent = data.length > 0 ? data[0].board.content : "";
+  const partyTotal = data.length > 0 ? data[0].party.total : "";
+  const Tags = data.length > 0 ? data[0].tags : [];
+
   let urId = localStorage.getItem('userId');
 
-  if(data == null) {
+  if(!data) {
     return <div className="Loding">로딩 중...</div>
   } else {
-    return (
-      <div className="modelbox">
-      <div className="modelContent">
-        <button className="closeModel" onClick={handleClose}>
-          X
-        </button>
-        <div className="contents">
-          <div className="title"><h3>{data.board.title}</h3> 조회수 : {data.board.views}</div>
-          <p className="tags">{data.tags.map((tag)=><span key={tag.tagId}>| {tag.tagName} |</span>)}</p>
-          <p className="content">{data.board.content}</p>
-          <p>파티 아이디 : {data.party.partyId}</p>
-          <p>{data.party.current} / {data.party.total}</p>
+    if(urId === data.userId) {
+      return (
+        <div className="modelbox">
+          <div className="modelContent">
+            <button className="closeModel" onClick={handleClose}>
+              X
+            </button>
+            <div className="contents">
+              <div className="title"><h3>{boardTitle}</h3></div>
+            </div>
+          </div>
         </div>
-        { urId === data.board.userId &&
+      );
+    } else {
+      return (
+        <div className="modelbox">
+        <div className="modelContent">
+          <button className="closeModel" onClick={handleClose}>
+            X
+          </button>
+          <div className="contents">
+            <div className="title">{boardTitle}</div>
+            <div className="user_content">{boardContent}</div>
+            <div className="users_total">이 방의 정원은 : {partyTotal} 입니다.</div>
+            <div className="tags">
+              {Tags.map((tag, index) => (
+              <span key={index} className="tag">#{tag.tagName} </span>
+              ))}
+            </div>         
+          </div>
           <div className="btn_wrapper">
             <MyButton onClick={onEditPostClick} text={"수정하기"} />
           </div>
-        }
+        </div>
+        {isEditPostOpen && (
+          <EditPost setEditPostOpen={setEditPostOpen} />
+        )}
       </div>
-      {isEditPostOpen && (
-        <EditPost setEditPostOpen={setEditPostOpen} />
-      )}
-    </div>
-    )
+      )
+    }
   }
 }
 
