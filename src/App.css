@@ -193,27 +193,35 @@ button[type="submit"]:hover {
 
 /*헤더(header)*/
 .header_main{
-  width: 80%;
-}
-.headerImg{
   width: 100%;
-  max-height: 300px;
-  padding-right: 100px;
-  overflow: hidden;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #c5ff6e;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
-.headerImg img{
-  max-height: initial;
-  margin-top: -15%;
+.header_main > .logo{
+  font-size: 50px;
+}
+.header_main > .logo b{
+  color: #5e52ff;
+}
+.header_main > .right_col{
+  margin-right: 10px;
 }
 
 
 /*아이템(item)*/
 .Item> .info_wrapper {
   text-align: left;
-  background-color: #E7FFC4;
-  border: solid 2px black;
+  background-color: white;
+  border: solid 2px #7ca145;
+  border-radius: 30px;
   padding: 10px 20px;
   margin: 10px 0px;
+}
+.Item > .info_wrapper> .post_date{
+  color: #9b9b9b;
 }
 .Item> .info_wrapper> .post_title {
   font-size: 20px;
@@ -226,7 +234,6 @@ button[type="submit"]:hover {
 }
 
 .Item> .info_wrapper> .post_tegs {
-  padding-left: 10px;
 }
 
 
@@ -235,14 +242,14 @@ button[type="submit"]:hover {
 
 /*리스트(list)*/
 .GuildList{
-  width: 80%;
-  height: 80%;
-  background-color: white;
-  border-radius: 5%;
-  padding: 0px 50px;
+  width: 70%;
+  height: 800px;
+  background-color: #e9e8e8;
+  padding: 0px 25px;
+  overflow:scroll;
 }
 .listCotents{
-  padding-top: 20px;
+  padding-top: 0px;
 }
 
 /*포스트(Post)*/

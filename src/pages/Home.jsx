@@ -8,7 +8,6 @@ const Home = () => {
 
   return(
     <div className="HomeMain">
-      <h1>길드</h1>
       <List />
     </div>
   );

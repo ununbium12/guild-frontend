@@ -25,6 +25,9 @@ const Header = () => {
   return(
     <header>
       <div className="header_main">
+        <div className="logo">
+          to<b>GET</b>her <b>US</b>
+        </div>
         <div className="right_col">
           <MyButton
             type={'positiv'}
@@ -32,12 +35,6 @@ const Header = () => {
             onClick={handleClick}
             disabled={isMyPage}
           />
-          <div className="headerImg">
-            <img
-              src={process.env.PUBLIC_URL + `assets/headerImage.jpg`} 
-              alt="헤더사진"
-            />
-          </div>
         </div>
       </div>
     </header>
