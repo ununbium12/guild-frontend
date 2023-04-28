@@ -26,6 +26,7 @@ const Header = () => {
     <header>
       <div className="header_main">
         <div className="logo">
+            <img src="../../assets/logo.png"/>
           to<b>GET</b>her <b>US</b>
         </div>
         <div className="right_col">

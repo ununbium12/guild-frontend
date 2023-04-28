@@ -202,6 +202,15 @@ button[type="submit"]:hover {
 }
 .header_main > .logo{
   font-size: 50px;
+  padding-left: 10px;
+}
+
+.header_main > .logo > img {
+  width: 70px;
+  height: 70px;
+  padding-right: 5px;
+  position: relative;
+  top: 10px; 
 }
 .header_main > .logo b{
   color: #5e52ff;
