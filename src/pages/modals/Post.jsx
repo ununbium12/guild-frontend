@@ -39,11 +39,14 @@ function Post(props) {
   const boardTitle = data.length > 0 ? data[0].board.title : "";
   const boardContent = data.length > 0 ? data[0].board.content : "";
   const partyTotal = data.length > 0 ? data[0].party.total : "";
+  const partyCurrent = data.length > 0 ? data[0].party.current : "";
   const Tags = data.length > 0 ? data[0].tags : [];
+  const boardViews = data.length > 0 ? data[0].board.views : "";
+  const party = data.length > 0 ? data[0].party.partyId : "";
 
   let urId = localStorage.getItem('userId');
 
-  if(!data) {
+  if(data == null) {
     return <div className="Loding">로딩 중...</div>
   } else {
     if(urId === data.userId) {
@@ -68,13 +71,15 @@ function Post(props) {
           </button>
           <div className="contents">
             <div className="title">{boardTitle}</div>
+            <div className="views">조회수 : {boardViews}</div>
             <div className="user_content">{boardContent}</div>
-            <div className="users_total">이 방의 정원은 : {partyTotal} 입니다.</div>
+            <div className="users_total">인원 : {partyCurrent} / {partyTotal}</div>
             <div className="tags">
               {Tags.map((tag, index) => (
               <span key={index} className="tag">#{tag.tagName} </span>
               ))}
-            </div>         
+            </div>
+            <div className="partyId">파티 아이디 : {party}</div>    
           </div>
           <div className="btn_wrapper">
             <MyButton onClick={onEditPostClick} text={"수정하기"} />
