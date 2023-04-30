@@ -18,6 +18,7 @@ const MyPage = () => {
         <button className="passwordChange">비밀번호 변경</button><br/>
         <button className="registerOut">회원탈퇴</button>
       </div>
+      
     </div>
   );
 };

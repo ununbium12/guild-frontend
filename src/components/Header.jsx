@@ -10,6 +10,8 @@ const Header = () => {
   const [isMyPage, setIsMyPage] = useState(false);
   const [isModalOpen, setModalOpen] = useState(false);
 
+  const username = null;
+
   useEffect(() => {
     setIsMyPage(location.pathname === '/myPage');
   }, [location]);
@@ -36,17 +38,26 @@ const Header = () => {
           to<b>GET</b>her <b>US</b>
         </div>
         <div className="right_col">
+          <div className="login_user">
+            {
+              username == null
+              ? <div>로그인 해주십시오.</div>
+              : <p>[{username}]님, 환영합니다.</p>
+            }
+          </div>
           <MyButton
-          type={'positiv'}
-          onClick={handleLoginClick}
-          text={'Login'}
+            type={'login'}
+            onClick={handleLoginClick}
+            text={'[로그인]'}
+            className="loginBtn"
           />
           {isModalOpen && (<Login setModalOpen={setModalOpen} />)}
           <MyButton
-            type={'positiv'}
-            text={buttonText}
+            type={'mypage'}
+            text={'[마이페이지]'}
             onClick={handleClick}
             disabled={isMyPage}
+            className="mypageBtn"
           />
         </div>
       </div>

@@ -90,10 +90,13 @@ body{
 }
 
 .modelbox > .modelContent > .contents> .title {
-  margin: 50px 30px;
+  margin: 50px 0px 0px 20px;
   font-size: 30px;
   font-weight: 600;
-  margin-bottom: 60px;
+}
+.modelbox > .modelContent > .contents> .views {
+  margin: 10px 0px 0px 30px;
+  font-size: 15px;
 }
 
 .modelbox > .modelContent > .contents> .user_content {
@@ -215,7 +218,22 @@ button[type="submit"]:hover {
 .header_main > .logo b{
   color: #5e52ff;
 }
-.header_main > .right_col{
+.right_col {
+  display: flex;
+  align-items: center;
+}
+
+.header_main >  .right_col> .login_user{
+  margin-right: 10px;
+}
+
+.header_main >  .right_col> .MyButton_login{
+  background-color:transparent;
+  color: black;
+}
+.header_main >  .right_col> .MyButton_mypage{
+  background-color:transparent;
+  color: black;
   margin-right: 10px;
 }
 

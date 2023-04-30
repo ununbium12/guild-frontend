@@ -79,7 +79,6 @@ function Post(props) {
               <span key={index} className="tag">#{tag.tagName} </span>
               ))}
             </div>
-            <div className="partyId">파티 아이디 : {party}</div>    
           </div>
           <div className="btn_wrapper">
             <MyButton onClick={onEditPostClick} text={"수정하기"} />
