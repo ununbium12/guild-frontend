@@ -1,7 +1,12 @@
 import React, { useState } from "react";
 import Axios from "axios";
+import { useNavigate } from "react-router-dom";
+import Register from "./Register";
 
 function Login(props) {
+  const [isEditPostOpen, setEditPostOpen] = useState(false);
+  const [isModalOpen, setModalOpen] = useState(false);
+  const navigate = useNavigate();
 
   const handleClose = () => {
     props.setModalOpen(false);
@@ -11,6 +16,7 @@ function Login(props) {
     userId : "",
     password : ""
   });
+
 
   const onChange = (e) => {
 	  const { name, value } = e.target
@@ -53,7 +59,8 @@ function Login(props) {
   }
 
   function letRegister () {
-
+    setModalOpen(false);
+    setEditPostOpen(true);
   };
 
   return (
@@ -83,6 +90,9 @@ function Login(props) {
             <input className="btn_Login" type="button" onClick={letLogin} id="loginBtn" value="로그인"/>
             <input className="btn_Register" type="button" onClick={letRegister} id="registerBtn" value="회원가입"/>
           </div>
+          {isEditPostOpen && (
+              <Register setEditPostOpen={setEditPostOpen} />
+            )}
         </div>
       </div>
     </div>

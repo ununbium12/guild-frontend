@@ -66,8 +66,8 @@ body{
 
 /*모달박스*/
 .modelbox > .modelContent {
-  width: 50%;
-  height: 50%;
+  width: 600px;
+  height: 450px;
   border-radius: 15px;
   /*background-image: url('../public/assets/scroll.jpg');*/
   background-color: whitesmoke;
@@ -196,6 +196,7 @@ button[type="submit"]:hover {
 
 /*헤더(header)*/
 .header_main{
+  min-width: 700px;
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -236,6 +237,7 @@ button[type="submit"]:hover {
   color: black;
   margin-right: 10px;
 }
+
 
 
 /*아이템(item)*/
