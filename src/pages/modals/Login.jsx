@@ -45,6 +45,9 @@ function Login(props) {
             localStorage.setItem("userId", userId);
             props.setModalOpen(false);
           }
+        }).catch((err) => {
+          alert("에러가 발생했습니다.");
+          console.log(err.res.data.massage);
         })
     }
   }
