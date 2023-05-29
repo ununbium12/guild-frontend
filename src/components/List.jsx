@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Item from "./Item";
 import NewPost from "../pages/modals/NewPost";
 import MyButton from "./MyButton";
-import Axios from 'axios';
+import Axios from '../AxiosController';
 import '../App.css';
+import { AuthContext } from "../context/AuthContext";
 
 const sortOptionList = [
   {value : "latest", name : "최신 순"},
@@ -14,9 +15,14 @@ const List = () => {
   const [isOpen, setOpen] = useState(false);
   const [sortType, setSortType] = useState('latest');
   const [list, setList] = useState(null);
+  const { isResdata } = useContext(AuthContext);
 
   const onClick = () => {
-    setOpen(true);
+    if(isResdata === null) {
+      setOpen(true);
+    } else {
+      alert("로그인 후 이용가능하십니다.");
+    }
   };
 
   useEffect(() => {

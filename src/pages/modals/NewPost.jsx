@@ -1,5 +1,5 @@
 import "../../App.css";
-import Axios from "axios";
+import Axios from '../../AxiosController';
 import Editor from "../../components/Editor";
 
 function NewPost(props) {
