@@ -1,4 +1,4 @@
-import axios from '../../AxiosController';
+import axios from '../AxiosController';
 
 const Logout = () =>{
 

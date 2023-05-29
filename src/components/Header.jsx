@@ -4,6 +4,7 @@ import { useState, useEffect, useContext } from "react";
 import '../App.css';
 import Login from "../pages/modals/Login";
 import { AuthContext } from "../context/AuthContext";
+import Logout from "./Logout";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -11,6 +12,9 @@ const Header = () => {
   const [isMyPage, setIsMyPage] = useState(false);
   const [isModalOpen, setModalOpen] = useState(false);
   const { isResdata } = useContext(AuthContext);
+
+  console.log(isResdata);
+
 
   useEffect(() => {
     setIsMyPage(location.pathname === '/myPage');
@@ -28,6 +32,10 @@ const Header = () => {
     setModalOpen(true);
   }
 
+  const handleLogoutClick = () => {
+    Logout();
+  }
+
   const buttonText = isMyPage ? 'Home' : 'My Page';
 
   return(
@@ -40,17 +48,26 @@ const Header = () => {
         <div className="right_col">
           <div className="login_user">
             {
-              isResdata !== null
-              ? <div>로그인 해주십시오.</div>
-              : <p>[{"더미데이터"}]님, 환영합니다.</p>
+              isResdata !== ""
+              ? <p>[{"더미데이터"}]님, 환영합니다.</p>
+              : <div>로그인 해주십시오.</div>
             }
           </div>
-          <MyButton
-            type={'login'}
-            onClick={handleLoginClick}
-            text={'[로그인]'}
-            className="loginBtn"
-          />
+          {
+            isResdata !== ""
+            ?<MyButton
+              type={'logout'}
+              onClick={handleLogoutClick}
+              text={'[로그아웃]'}
+              className="loginBtn"
+            />
+            :<MyButton
+              type={'login'}
+              onClick={handleLoginClick}
+              text={'[로그인]'}
+              className="loginBtn"
+            />
+          }
           {isModalOpen && (<Login setModalOpen={setModalOpen} />)}
           <MyButton
             type={'mypage'}

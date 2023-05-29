@@ -1,6 +1,7 @@
 import React, {useState, useContext, useEffect, useRef} from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../../context/AuthContext";
 
 const Register  = (props) => {
   //입력받은 요소들의 ref 생성
@@ -10,6 +11,7 @@ const Register  = (props) => {
   const rePasswordFormRef = useRef('');
 
   const navigate = useNavigate();
+  const { login, isResdata } = useContext(AuthContext);
 
   const [ isUserId, setUserId ] = useState("");
   const [userIdError, setUserIdError] = useState("");
@@ -19,6 +21,12 @@ const Register  = (props) => {
   const [isUserIdAvailable, setUserIdAvailable] = useState(false); // 아이디 사용 가능 여부 상태 추가
 
 
+    //로그인된 상태면 들어올수 없음
+    useEffect(() => {
+      if(isResdata !== ""){
+        navigate('/');
+      }
+    },[isResdata, navigate])
 
   const [inputs, setInputs] = useState({
     userId: '',
@@ -135,7 +143,7 @@ const Register  = (props) => {
   }
 
   function LoginPage() {
-    navigate('/login');
+    props.setEditPostOpen(false);
   }
 
   return (
