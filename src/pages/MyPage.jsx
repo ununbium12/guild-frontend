@@ -1,9 +1,10 @@
-import Axios from "axios";
 import '../App.css';
+import { useContext } from "react";
+import { AuthContext } from "../context/AuthContext";
 
 const MyPage = () => {
 
-  Axios.defaults.withCredentials = true; //axios 사용 컴포넌트 마다 한번씩 붙여넣을 것
+  const { isResdata } = useContext(AuthContext);
 
   return(
     <div className="pages container clearfix">
@@ -13,12 +14,18 @@ const MyPage = () => {
         src={process.env.PUBLIC_URL + `assets/pf.png`} 
         alt="프로필 사진"
       />
-      <h3 className="profileName">000님 안녕하세요</h3>
+      { isResdata !== null ?
+        <h3> </h3> : <h3 className="profileName">{"더미데이터"}님 안녕하세요</h3>
+      }
       <div className="profileBtn">
-        <button className="passwordChange">비밀번호 변경</button><br/>
-        <button className="registerOut">회원탈퇴</button>
-      </div>
-      
+        { isResdata !== null ?
+          <div></div> : <button className="passwordChange">비밀번호 변경</button>
+        }
+        <br />
+        { isResdata !== null ?
+          <div></div> : <button className="registerOut">회원탈퇴</button>
+        }
+      </div>      
     </div>
   );
 };

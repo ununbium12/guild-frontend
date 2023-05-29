@@ -1,5 +1,5 @@
 import React from "react";
-import Axios from "axios";
+import Axios from '../AxiosController';
 import List from "../components/List";
 
 const Home = () => {

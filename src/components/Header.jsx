@@ -1,16 +1,16 @@
 import MyButton from "./MyButton"
 import { useNavigate, useLocation } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import '../App.css';
 import Login from "../pages/modals/Login";
+import { AuthContext } from "../context/AuthContext";
 
 const Header = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [isMyPage, setIsMyPage] = useState(false);
   const [isModalOpen, setModalOpen] = useState(false);
-
-  const username = null;
+  const { isResdata } = useContext(AuthContext);
 
   useEffect(() => {
     setIsMyPage(location.pathname === '/myPage');
@@ -40,9 +40,9 @@ const Header = () => {
         <div className="right_col">
           <div className="login_user">
             {
-              username == null
+              isResdata !== null
               ? <div>로그인 해주십시오.</div>
-              : <p>[{username}]님, 환영합니다.</p>
+              : <p>[{"더미데이터"}]님, 환영합니다.</p>
             }
           </div>
           <MyButton

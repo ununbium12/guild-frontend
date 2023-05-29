@@ -1,12 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import '../../App.css';
 import EditPost from "./EditPost";
 import MyButton from "../../components/MyButton";
-import Axios from "axios";
+import Axios from '../../AxiosController';
+import { AuthContext } from "../../context/AuthContext";
 
 function Post(props) {
   const [isEditPostOpen, setEditPostOpen] = useState(false);
   const [data, setData] = useState([]);
+  const { isResdata } = useContext(AuthContext);
 
   Axios.defaults.withCredentials = true; //axios 사용 컴포넌트 마다 한번씩 붙여넣을 것
 
@@ -44,25 +46,9 @@ function Post(props) {
   const boardViews = data.length > 0 ? data[0].board.views : "";
   const party = data.length > 0 ? data[0].party.partyId : "";
 
-  let urId = localStorage.getItem('userId');
-
   if(data == null) {
     return <div className="Loding">로딩 중...</div>
   } else {
-    if(urId === data.userId) {
-      return (
-        <div className="modelbox">
-          <div className="modelContent">
-            <button className="closeModel" onClick={handleClose}>
-              X
-            </button>
-            <div className="contents">
-              <div className="title"><h3>{boardTitle}</h3></div>
-            </div>
-          </div>
-        </div>
-      );
-    } else {
       return (
         <div className="modelbox">
         <div className="modelContent">
@@ -80,16 +66,18 @@ function Post(props) {
               ))}
             </div>
           </div>
-          <div className="btn_wrapper">
-            <MyButton onClick={onEditPostClick} text={"수정하기"} />
-          </div>
+          { isResdata !== null ? 
+            <div></div> :
+            <div className="btn_wrapper">
+              <MyButton onClick={onEditPostClick} text={"수정하기"} />
+            </div>
+          }
         </div>
         {isEditPostOpen && (
           <EditPost setEditPostOpen={setEditPostOpen} />
         )}
       </div>
       )
-    }
   }
 }
 

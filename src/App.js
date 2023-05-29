@@ -6,18 +6,21 @@ import NotFound from './pages/NotFound';
 import Footer from './components/Footer';
 import Header from './components/Header';
 import Post from './pages/modals/Post';
+import { AuthProvider } from './context/AuthContext';
 
 function App() {
   return (
     <BrowserRouter>
-      <Header />
-      <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/myPage' element={<MyPage />} />
-        <Route path='/post/:id' element={<Post />} />
-        <Route path='/*' element={<NotFound />} />
-      </Routes>
-      <Footer />
+      <AuthProvider>
+        <Header />
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='/myPage' element={<MyPage />} />
+          <Route path='/post/:id' element={<Post />} />
+          <Route path='/*' element={<NotFound />} />
+        </Routes>
+        <Footer />
+      </AuthProvider>
     </BrowserRouter>
   );
 }
