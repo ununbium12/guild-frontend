@@ -1,6 +1,6 @@
 import MyButton from "./MyButton"
 import { useNavigate, useLocation } from "react-router-dom";
-import { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import '../App.css';
 import Login from "../pages/modals/Login";
 import { AuthContext } from "../context/AuthContext";
@@ -33,7 +33,8 @@ const Header = () => {
   }
 
   const handleLogoutClick = () => {
-    <Logout/>
+    Logout();
+    window.location.reload();
   }
 
   const buttonText = isMyPage ? 'Home' : 'My Page';
