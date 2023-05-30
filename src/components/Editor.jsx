@@ -1,19 +1,12 @@
 import Axios from 'axios';
-import { useNavigate, useParams } from 'react-router-dom';
-import { useRef, useState, useEffect } from 'react';
-import Header from './Header';
+import { useState, useEffect } from 'react';
 import '../App.css';
 
-
-
-
-const Editor = (props) =>{
+const Editor = ({ isEdit }) =>{
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [category, setCategory] = useState("");
   const [categoryInputValue, setCategoryInputValue] = useState("");
-  
-  const idx = useParams().id;
 
   const handleTitleChange = (event) => {
     setTitle(event.target.value);
@@ -32,37 +25,13 @@ const Editor = (props) =>{
   };
 
   useEffect(() => {
-    const config = {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    };
-
-    if(idx !== undefined) {
-      Axios.get(`http://localhost:8080/api/boards/${idx}`, config) 
-        .then(res => {
-          setTitle(res.data.title, ...title);
-          setContent(res.data.content, ...content);
-        })
-    }
+    Axios.post()
   })
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    // Do something with the title, content, and category
-    // For example, you can pass them to a function passed as a prop
-    props.onSubmit(title, content, category);
-    // Clear the inputs
-    setTitle("");
-    setContent("");
-    setCategory("");
-    // Close the modal
-    props.onClose();
-  };
   return(
     <div className="modal">
       <div className="modal-content">
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={""}>
           <label htmlFor="title">모집제목</label>
           <input
             id="title"
@@ -77,27 +46,27 @@ const Editor = (props) =>{
             onChange={handleContentChange}
           />
           <div>
-        <label htmlFor="category">Category:</label>
-        {categoryInputValue ? (
-          <input
-            id="category"
-            type="text"
-            value={categoryInputValue}
-            onChange={handleCategoryInputChange}
-          />
-        ) : (
-          <select
-            id="category"
-            value={category}
-            onChange={handleCategoryChange}
-          >
-            <option value="">Select a category</option>
-            <option value="news">News</option>
-            <option value="sports">Sports</option>
-            <option value="politics">Politics</option>
-          </select>
-        )}
-      </div>
+          <label htmlFor="category">Category:</label>
+            {categoryInputValue ? (
+              <input
+                id="category"
+                type="text"
+                value={categoryInputValue}
+                onChange={handleCategoryInputChange}
+              />
+            ) : (
+              <select
+                id="category"
+                value={category}
+                onChange={handleCategoryChange}
+              >
+                <option value="">Select a category</option>
+                <option value="news">News</option>
+                <option value="sports">Sports</option>
+                <option value="politics">Politics</option>
+              </select>
+            )}
+          </div>
           <button type="submit">작성완료</button>
         </form>
       </div>

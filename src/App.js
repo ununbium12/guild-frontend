@@ -7,6 +7,7 @@ import Footer from './components/Footer';
 import Header from './components/Header';
 import Post from './pages/modals/Post';
 import { AuthProvider } from './context/AuthContext';
+import EditPost from './pages/modals/EditPost';
 
 function App() {
   return (
@@ -16,7 +17,8 @@ function App() {
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/myPage' element={<MyPage />} />
-          <Route path='/post/:id' element={<Post />} />
+          <Route path='' element={<Post />} />
+          <Route path='' element={<EditPost />} />
           <Route path='/*' element={<NotFound />} />
         </Routes>
         <Footer />

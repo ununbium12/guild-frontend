@@ -75,7 +75,7 @@ const List = () => {
   }
 
   const onClick = () => {
-    if(isResdata === null) {
+    if(isResdata !== "") {
       setOpen(true);
     } else {
       alert("로그인 후 이용가능하십니다.");
