@@ -18,7 +18,7 @@ const AuthProvider = ({ children }) => {
     axios.get("http://localhost:8080/api/users/isLogin")
       .then(res => {
         setResdata(res.data);
-        console.log(res.data + "에러 부분");
+        console.log(res.data);
         if (res.data === undefined) {
           setIsLoggedIn(false);
         } else {
