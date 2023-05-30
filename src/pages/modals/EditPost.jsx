@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import "../../App.css";
-import { AuthContext } from "../context/AuthContext";
+import { AuthContext } from "../../context/AuthContext";
 
 function EditPost(props) {
   const { isResdata } = useContext(AuthContext);
