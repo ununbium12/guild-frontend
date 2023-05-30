@@ -46,7 +46,6 @@ function Post(props) {
   const boardViews = data.length > 0 ? data[0].board.views : "";
   const party = data.length > 0 ? data[0].party.partyId : "";
 
-  
   if(data == null) {
     return <div className="Loding">로딩 중...</div>
   } else {
@@ -67,9 +66,8 @@ function Post(props) {
               ))}
             </div>
           </div>
-          { isResdata !== null 
-            ? <div></div> 
-            :
+          { isResdata !== null ? 
+            <div></div> :
             <div className="btn_wrapper">
               <MyButton onClick={onEditPostClick} text={"수정하기"} />
             </div>

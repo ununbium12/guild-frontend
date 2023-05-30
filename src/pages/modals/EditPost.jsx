@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import "../../App.css";
 import { AuthContext } from "../../context/AuthContext";
+import Editor from "../../components/Editor";
 
 function EditPost(props) {
   const { isResdata } = useContext(AuthContext);
@@ -10,6 +11,8 @@ function EditPost(props) {
     props.setEditPostOpen(false);
   };
 
+  const idx = props.idx;
+
   return (
     <div className="modelbox">
       <div className="modelContent">
@@ -17,7 +20,7 @@ function EditPost(props) {
           X
         </button>
         <div className="contents">
-          <p>현재 Eidtpost 모달 창이 열렸습니다.</p>
+          <Editor idx={idx} />
         </div>
       </div>
     </div>

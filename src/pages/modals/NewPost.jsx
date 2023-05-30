@@ -3,7 +3,6 @@ import Axios from '../../AxiosController';
 import Editor from "../../components/Editor";
 
 function NewPost(props) {
-  Axios.defaults.withCredentials = true;
 
   const handleClose = () => {
     props.setOpen(false);
@@ -16,7 +15,7 @@ function NewPost(props) {
           X
         </button>
         <div className="contents">
-          <Editor />
+          <Editor setOpen={props} />
         </div>
       </div>
     </div>
