@@ -46,7 +46,7 @@ function Post(props) {
   const boardViews = data.length > 0 ? data[0].board.views : "";
   const party = data.length > 0 ? data[0].party.partyId : "";
 
-  
+
   if(data == null) {
     return <div className="Loding">로딩 중...</div>
   } else {
@@ -56,7 +56,7 @@ function Post(props) {
           <button className="closeModel" onClick={handleClose}>
             X
           </button>
-          <div className="contents">
+          <div className="postContents">
             <div className="title">{boardTitle}</div>
             <div className="views">조회수 : {boardViews}</div>
             <div className="user_content">{boardContent}</div>
@@ -70,7 +70,7 @@ function Post(props) {
           { isResdata !== null 
             ? <div></div> 
             :
-            <div className="btn_wrapper">
+            <div className="btn_edit">
               <MyButton onClick={onEditPostClick} text={"수정하기"} />
             </div>
           }

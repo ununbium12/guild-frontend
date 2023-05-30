@@ -2,6 +2,7 @@ import React, {useState, useContext, useEffect, useRef} from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
+import '../../App.css';
 
 const Register  = (props) => {
   //입력받은 요소들의 ref 생성
@@ -148,52 +149,55 @@ const Register  = (props) => {
 
   return (
     <div className="modelbox">
-      <div className="modelContent">
+      <div className="modelContent registerBox">
         <button className="closeModel" onClick={handleClose}>
           X
         </button>
-        <div className="title">회원가입 페이지</div>
-        <div className="contents">
-          <p>현재 Register 모달 창이 열렸습니다.</p>
-          <div className="form-row">
-            <div className="form-item">
-              <div className="form-input">
-                <input className="input_Id" type="text" id="userId" name="userId" placeholder="아이디" onChange={onChangeValue}ref={userIdRef} />
-                <input className="buttonId" type="button" onClick={onClick} id="btnUserId" value="중복체크" />
-                {userIdError && <p className="error">{userIdError}</p>}
+        <div className="contents_register">
+          <div className="title">회원가입</div>
+          <div className="contents">
+            <p></p>
+            <div className="form-row topRegister">
+              <div className="form-item">
+                <div className="form-input">
+                  <input className="inputId registerId" type="text" id="userId" name="userId" placeholder="아이디" onChange={onChangeValue}ref={userIdRef} />
+                  <input className="buttonId" type="button" onClick={onClick} id="btnUserId" value="중복체크" />
+                  <div className="errorTxt">{userIdError && <p className="error">{userIdError}</p>}</div>
+                </div>
               </div>
             </div>
-          </div>
-          <div className="form-row">
-            <div className="form-item">
-              <div className="form-input">
-                <input className="inputId" type="text" id="userName" name="userName" placeholder="유저이름" onChange={onChangeValue} ref={userNameRef} />
-                {userNameError && <p className="error">{userNameError}</p>}
+            <div className="form-row">
+              <div className="form-item">
+                <div className="form-input">
+                  <input className="inputId" type="text" id="userName" name="userName" placeholder="유저이름" onChange={onChangeValue} ref={userNameRef} />
+                  <div className="errorTxt">{userNameError && <p className="error">{userNameError}</p>}</div>
+                </div>
               </div>
             </div>
-          </div>
-          <div className="form-row">
-            <div className="form-item">
-              <div className="form-input">
-                <input className="inputId" type="password" id="password" name="password" placeholder="비밀번호" onChange={onChangeValue} ref={passwordFormRef} />
-                {passwordError && <p className="error">{passwordError}</p>}
+            <div className="form-row">
+              <div className="form-item">
+                <div className="form-input">
+                  <input className="inputId" type="password" id="password" name="password" placeholder="비밀번호" onChange={onChangeValue} ref={passwordFormRef} />
+                  <div className="errorTxt">{passwordError && <p className="error">{passwordError}</p>}</div>
+                </div>
               </div>
             </div>
-          </div>
-          <div className="form-row">
-            <div className="form-item">
-              <div className="form-input">
-                <input className="inputId" type="password" id="rePassword" name="rePassword" placeholder="비밀번호 재입력" onChange={onChangeValue} ref={rePasswordFormRef} />
-                {rePasswordError && <p className="error">{rePasswordError}</p>}
+            <div className="form-row">
+              <div className="form-item">
+                <div className="form-input">
+                  <input className="inputId" type="password" id="rePassword" name="rePassword" placeholder="비밀번호 재입력" onChange={onChangeValue} ref={rePasswordFormRef} />
+                  <div className="errorTxt">{rePasswordError && <p className="error">{rePasswordError}</p>}</div>
+                </div>
               </div>
             </div>
+            
+            <div className="form-Row">
+              <input className="btn_Register" type="button" onClick={handleRegistration} id="loginBtn" value="회원가입" disabled={!isUserIdAvailable} />
+              <input className="btn_getLogin" type="button" onClick={LoginPage} id="getLoginBtn" value="로그인 하러가기"/>
           </div>
-          
-          <div className="form-Row">
-          <input className="btn_Login" type="button" onClick={handleRegistration} id="loginBtn" value="회원가입" disabled={!isUserIdAvailable} />
-          <input className="btn_getLogin" type="button" onClick={LoginPage} id="getLoginBtn" value="로그인 하러가기"/>
+          </div>
         </div>
-        </div>
+        
       </div>
     </div>
   )

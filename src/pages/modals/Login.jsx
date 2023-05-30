@@ -3,6 +3,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Register from "./Register";
 import { AuthContext } from "../../context/AuthContext";
+import '../../App.css';
 
 function Login(props) {
   const [userId, setUserId] = useState("");
@@ -94,36 +95,38 @@ function Login(props) {
 
   return (
     <div className="modelbox">
-      <div className="modelContent">
+      <div className="modelContent login">
         <button className="closeModel" onClick={handleClose}>
           X
         </button>
-        <div className="title">로그인 창</div>
-        <div className="contents">
-          <p>현재 Login 모달 창이 열렸습니다.</p>
-          <div className="form-row">
-            <div className="form-item">
-              <div className="form-input">
-                <input className="input_Id" type="text" id="userId" name="userId" placeholder="아이디" onChange={handleUserIdChange} />
-                {userIdError && <p className="error">{userIdError}</p>}
+        <div className="contents_login">
+          <div className="title">로그인</div>
+          <div className="contents">
+            <p></p>
+            <div className="form-row inputId">
+              <div className="form-item">
+                <div className="form-input input_Id">
+                  <input className="input_Id" type="text" id="userId" name="userId" placeholder="아이디" onChange={handleUserIdChange} />
+                  <div className="errorTxt">{userIdError && <p className="error">{userIdError}</p>}</div>
+                </div>
               </div>
             </div>
-          </div>
-          <div className="form-row">
-            <div className="form-item">
-              <div className="form-input">
-                <input className="input_Pw" type="password" id="password" name="password" placeholder="비밀번호" onChange={handlePasswordChange}  />
-                {passwordError && <p className="error">{passwordError}</p>}
+            <div className="form-row">
+              <div className="form-item">
+                <div className="form-input">
+                  <input className="input_Pw" type="password" id="password" name="password" placeholder="비밀번호" onChange={handlePasswordChange}  />
+                  <div className="errorTxt">{passwordError && <p className="error">{passwordError}</p>}</div>
+                </div>
               </div>
             </div>
+            <div className="form-row">
+              <input className="btn_Login" type="button" onClick={letLogin} id="loginBtn" value="로그인"/>
+              <input className="btn_Register" type="button" onClick={letRegister} id="registerBtn" value="회원가입"/>
+            </div>
+            {isEditPostOpen && (
+                <Register setEditPostOpen={setEditPostOpen} />
+              )}
           </div>
-          <div className="form-row">
-            <input className="btn_Login" type="button" onClick={letLogin} id="loginBtn" value="로그인"/>
-            <input className="btn_Register" type="button" onClick={letRegister} id="registerBtn" value="회원가입"/>
-          </div>
-          {isEditPostOpen && (
-              <Register setEditPostOpen={setEditPostOpen} />
-            )}
         </div>
       </div>
     </div>
