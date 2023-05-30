@@ -58,7 +58,7 @@ function Login(props) {
           if (res && res.data) {
             if (res.data === "0" || res.data === "1") {
               // 로그인이 실패한 경우
-              console.log(res.data.errorId);
+              console.log(res.data);
               alert("입력한 정보가 올바르지 않습니다.");
             } else {
               // 로그인이 성공한 경우

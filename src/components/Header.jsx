@@ -34,6 +34,7 @@ const Header = () => {
 
   const handleLogoutClick = () => {
     Logout();
+    window.location.reload();
   }
 
   const buttonText = isMyPage ? 'Home' : 'My Page';
@@ -55,7 +56,7 @@ const Header = () => {
           </div>
           {
             isResdata !== ""
-            ?<MyButton
+            ? <MyButton
               type={'logout'}
               onClick={handleLogoutClick}
               text={'[로그아웃]'}
@@ -71,7 +72,7 @@ const Header = () => {
           {isModalOpen && (<Login setModalOpen={setModalOpen} />)}
           <MyButton
             type={'mypage'}
-            text={'[마이페이지]'}
+            text={buttonText}
             onClick={handleClick}
             disabled={isMyPage}
             className="mypageBtn"
