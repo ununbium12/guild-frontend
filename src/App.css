@@ -237,6 +237,10 @@ button[type="submit"]:hover {
   color: black;
   margin-right: 10px;
 }
+.header_main >  .right_col> .MyButton_logout{
+  background-color:transparent;
+  color: black;
+}
 
 
 
@@ -270,7 +274,7 @@ button[type="submit"]:hover {
 
 
 /*리스트(list)*/
-.GuildList{
+.HomeMain{
   width: 70%;
   height: 800px;
   background-color: #e9e8e8;

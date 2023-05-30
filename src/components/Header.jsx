@@ -33,8 +33,7 @@ const Header = () => {
   }
 
   const handleLogoutClick = () => {
-    Logout();
-    window.location.reload();
+    <Logout/>
   }
 
   const buttonText = isMyPage ? 'Home' : 'My Page';
@@ -50,7 +49,7 @@ const Header = () => {
           <div className="login_user">
             {
               isResdata !== ""
-              ? <p>[{"더미데이터"}]님, 환영합니다.</p>
+              ? <p>[{isResdata}]님, 환영합니다.</p>
               : <div>로그인 해주십시오.</div>
             }
           </div>
@@ -60,7 +59,7 @@ const Header = () => {
               type={'logout'}
               onClick={handleLogoutClick}
               text={'[로그아웃]'}
-              className="loginBtn"
+              className="logoutBtn"
             />
             :<MyButton
               type={'login'}
