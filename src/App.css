@@ -479,4 +479,45 @@ button[type="submit"]:hover {
 }
 
 
-/*포스트(Post)*/
+/*포스트(Post), 수정(Editor)*/
+.postContent {
+  text-align: center;
+  margin-top: 30px;
+}
+.postContent> .title{
+  font-size: 30px;
+  font-weight: 600;
+  margin-left: 70px;
+  padding-bottom: 10px;
+}
+.postContent>.title_div{
+  border-top: solid 1px rgb(221, 221, 221);
+}
+
+
+.postContent>.title_div,
+.postContent>.content_div,
+.postContent>.partyTotal_div,
+.postContent>.tags_div
+ {
+  display: flex;
+  align-items: center;
+}
+
+.contents_register>.contents>.form-row>.form-item> .form-input {
+  width: 100%;
+  margin-bottom: 10px
+}
+.contents_register>.contents>.form-row>.form-item> .input_Id{
+  padding-top: 50px;
+}
+
+.contents_register>.contents>.form-row>.form-item> .form-input .inputId{
+  width: 60%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 15px;
+  outline: none;
+}
+
+
