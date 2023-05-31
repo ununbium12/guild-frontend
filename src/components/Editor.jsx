@@ -99,7 +99,7 @@ const Editor = (props) => {
   return (
     <div className="modal">
       <div className="modal-content">
-        <section>
+        <div className='postContent'>
           {
             !props.isEdit ?
               <h2 htmlFor="title">새 게시글 쓰기</h2> :
@@ -158,8 +158,8 @@ const Editor = (props) => {
               ))}
             </ul>
           </div>
-        </section>
-        <section>
+        </div>
+        <div className='postBtn'>
           <div className='control_box'>
             <MyButton
               text={"작성완료"}
@@ -178,7 +178,7 @@ const Editor = (props) => {
                 />
             }
           </div>
-        </section>
+        </div>
       </div>
     </div>
   )
