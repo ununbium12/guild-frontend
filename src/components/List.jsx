@@ -32,7 +32,7 @@ const List = () => {
   const onSearch = (e) => {
     e.preventDefault();
     if (search === null || search === '') {
-      if (sortType !== 'latest') {
+      if (sortType === 'latest') {
         Axios.get(`http://localhost:8080/api/boards/list?page=0&size=10`)
         .then(res => {
           setList(res.data);

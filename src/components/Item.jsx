@@ -1,13 +1,15 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import MyButton from "./MyButton";
 import Post from "../pages/modals/Post";
 import '../App.css';
 import EditPost from "../pages/modals/EditPost";
+import { AuthContext } from "../context/AuthContext";
 
 function Item (props) {
 
   const [isPostOpen, setPostOpen] = useState(false);
   const [isEditPostOpen, setEditPostOpen] = useState(false);
+  const { isResdata } = useContext(AuthContext);
 
   const onPostClick = () => {
     setPostOpen(true);
@@ -22,8 +24,6 @@ function Item (props) {
   const tags = props.tags;
   const tagNames = tags.map(tag => "#" + tag.tagName).join('  ');
   console.log(tagNames);
-  
-  let urId = localStorage.getItem('userId');
 
   const strDate = new Date(parseInt(board.writeDate)).toLocaleDateString();
 
@@ -39,7 +39,7 @@ function Item (props) {
         </div>
         {isPostOpen && (<Post setPostOpen={setPostOpen} board={board.boardId} />)}
         <div className="btn_wrapper">
-          {urId === board.userId ?
+          {isResdata === board.userId ?
             <MyButton
               onClick={onEditPostClick}
               text={"수정하기"}

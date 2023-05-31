@@ -49,7 +49,22 @@ const Editor = ( props , { isEdit, modalClose }) =>{
     if(window.confirm(isEdit? "게시글을 수정하시겠습니까?" : "새 게시물을 업로드 하시겠습니까?")) {     
       if(!isEdit) {
         // 새 게시물 작성
-        Axios.post("http://localhost:8080/api/boards/write")
+        const data = {
+          'userId': isResdata,
+          'title': title,
+          'content': content,
+          'total': partyTotal,
+          'tagName': [
+            ...tagName
+          ],
+        }
+        console.log(data);
+        Axios.post("http://localhost:8080/api/boards/write",
+        JSON.stringify(data),{
+          headers:{
+            "Content-Type": "application/json",
+          }, 
+        })
         .then(res => {
           alert("게시물이 업로드 되었습니다.");
           window.location.reload()
