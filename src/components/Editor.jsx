@@ -78,6 +78,28 @@ const Editor = (props) => {
     }
   }
 
+  const handleRemove = () => {
+    if (window.confirm('정말 삭제하시겠습니까?')) {
+
+
+        const data = {
+          boardId: props.idx,
+          userId: isResdata,
+        }
+      Axios.post(`http://localhost:8080/api/boards/delete`,
+        JSON.stringify(data),{
+          headers:{
+            "Content-Type": "application/json",
+          },
+        })
+        .then((res) =>{
+          alert("DB에서 삭제가 완료되었습니다");
+        }).catch((err) =>{
+          console.log(err.response.data.message);
+        })
+    }
+  }
+
   const handleTagNameChange = (e) => {
     setTagName(e.target.value);
   };
@@ -175,7 +197,7 @@ const Editor = (props) => {
                 <MyButton
                   text={'삭제하기'}
                   type={'negative'}
-                  onClick={""} // 삭제하기 API 걸어야하는 부분
+                  onClick={handleRemove} // 삭제하기 API 걸어야하는 부분
                 />
             }
           </div>
