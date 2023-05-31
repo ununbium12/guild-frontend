@@ -439,9 +439,6 @@ button[type="submit"]:hover {
 .contents_register>.contents>.form-row>.form-item> .input_Id{
   padding-top: 50px;
 }
-.registerId{
-  margin-left: 70px;
-}
 .buttonId{
   padding: 10px 20px;
   margin-left: 10px;
@@ -458,6 +455,10 @@ button[type="submit"]:hover {
   border: 1px solid #ccc;
   border-radius: 15px;
   outline: none;
+}
+.contents_register>.contents>.form-row>.form-item> .form-input>.registerId{
+  width: 55%;
+  margin-left: 70px;
 }
 
 .contents_register>.contents>.form-Row{
