@@ -11,6 +11,15 @@ body{
 }*/
 
 /*마이페이지*/
+.pages {
+  position: relative;
+  flex-direction: column;
+  padding-left: 5%;
+}
+.mypageProfile{
+  padding-top: 30px;
+  padding-bottom: 80px;
+}
 .profileCon{
   float: left;
   margin: 0 10px 10px 10px;
@@ -43,6 +52,19 @@ body{
   display: block;
   clear: both;
 }
+
+.myPageBoard {
+  width: 80%;
+  min-width: 800px;
+  border-top: solid 2px #bebebe;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  margin-top: auto;
+
+}
+
+
+
 
 /*푸터*/
 .footer-frame{
@@ -185,7 +207,7 @@ button[type="submit"] {
   color: white;
   border: none;
   border-radius: 5px;
-  padding: 10px;
+  padding: 5px 10px;
   cursor: pointer;
   margin-top: 10px;
 }
@@ -196,7 +218,7 @@ button[type="submit"]:hover {
 
 /*헤더(header)*/
 .header_main{
-  min-width: 700px;
+  min-width: 800px;
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -219,6 +241,10 @@ button[type="submit"]:hover {
 .header_main > .logo b{
   color: #5e52ff;
 }
+
+.header_main > .logo:hover{
+  cursor: pointer;
+}
 .right_col {
   display: flex;
   align-items: center;
@@ -228,23 +254,47 @@ button[type="submit"]:hover {
   margin-right: 10px;
 }
 
-.header_main >  .right_col> .MyButton_login{
+/* 버튼 css */
+
+.MyButton_login,
+.MyButton_logout,
+.MyButton_mypage,
+.MyButton_editPost{
   background-color:transparent;
   color: black;
 }
-.header_main >  .right_col> .MyButton_mypage{
-  background-color:transparent;
-  color: black;
+.MyButton_mypage{
   margin-right: 10px;
 }
-.header_main >  .right_col> .MyButton_logout{
-  background-color:transparent;
-  color: black;
+
+.MyButton_login:hover,
+.MyButton_logout:hover,
+.MyButton_mypage:hover,
+.MyButton_editPost:hover{
+  background-color: rgba(30, 39, 33, 0.2);
+  color: white;
+}
+
+.MyButton_editPost{
+  border-radius: 25px;
+  background-color: #7ca145;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+.MyButton_editPost:hover{
+  background-color: #5c7732;
+  color: white;
+  font-weight: 700;
 }
 
 
 
 /*아이템(item)*/
+.contents .Item {
+  min-width: 600px;
+  display: flex;
+  align-items: flex-start;
+}
 .Item> .info_wrapper {
   text-align: left;
   background-color: white;
@@ -252,6 +302,11 @@ button[type="submit"]:hover {
   border-radius: 30px;
   padding: 10px 20px;
   margin: 10px 0px;
+
+  flex: 1;
+}
+.Item> .info_wrapper:hover{
+  cursor: pointer;
 }
 .Item > .info_wrapper> .post_date{
   color: #9b9b9b;
@@ -266,9 +321,9 @@ button[type="submit"]:hover {
   padding-bottom: 10px;
 }
 
-.Item> .info_wrapper> .post_tegs {
+.contents .Item .btn_wrapper {
+  margin-left: 85%;
 }
-
 
 
 

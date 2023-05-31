@@ -36,15 +36,16 @@ function Item (props) {
           <div className="post_title">{board.title}</div>
           <div className="post_content_preview">{board.content.slice(0, 25)}</div>
           <div className="post_tegs">{tagNames}</div>
-        </div>
-        {isPostOpen && (<Post setPostOpen={setPostOpen} board={board.boardId} />)}
-        <div className="btn_wrapper">
+          <div className="btn_wrapper">
           {isResdata === board.userId ?
             <MyButton
+              type={'editPost'}
               onClick={onEditPostClick}
               text={"수정하기"}
             /> : ""}
         </div>
+        </div>
+        {isPostOpen && (<Post setPostOpen={setPostOpen} board={board.boardId} />)}
         {isEditPostOpen && (<EditPost setEditPostOpen={setEditPostOpen} />)}
       </div>
     </div>

@@ -36,13 +36,16 @@ const Header = () => {
     Logout();
     window.location.reload();
   }
+  const handleLogoClick = () => {
+    navigate('/');
+  };
 
   const buttonText = isMyPage ? 'Home' : 'My Page';
 
   return(
     <header>
-      <div className="header_main">
-        <div className="logo">
+      <div className="header_main" >
+        <div className="logo" onClick={handleLogoClick}>
             <img src="../../assets/logo.png"/>
           to<b>GET</b>her <b>US</b>
         </div>
