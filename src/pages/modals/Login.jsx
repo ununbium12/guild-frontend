@@ -38,6 +38,12 @@ function Login(props) {
     setPassword(e.target.value);
     setPasswordError("");
   }
+  //엔터키로 실행
+  const handleOnKeyPress = e => {
+    if (e.key === 'Enter') {
+      letLogin();
+    }
+  };
 
   function letLogin() {
     let isValid = true;
@@ -57,7 +63,7 @@ function Login(props) {
         .post("http://localhost:8080/api/users/login", { userId, password })
         .then((res) => {
           if (res && res.data) {
-            if (res.data === "0" || res.data === "1") {
+            if (res.data === 0 || res.data === 1) {
               // 로그인이 실패한 경우
               console.log(res.data);
               alert("입력한 정보가 올바르지 않습니다.");
@@ -106,7 +112,7 @@ function Login(props) {
             <div className="form-row inputId">
               <div className="form-item">
                 <div className="form-input input_Id">
-                  <input className="input_Id" type="text" id="userId" name="userId" placeholder="아이디" onChange={handleUserIdChange} />
+                  <input className="input_Id" type="text" id="userId" name="userId" placeholder="아이디" onChange={handleUserIdChange} onKeyDown={handleOnKeyPress}/>
                   <div className="errorTxt">{userIdError && <p className="error">{userIdError}</p>}</div>
                 </div>
               </div>
@@ -114,7 +120,7 @@ function Login(props) {
             <div className="form-row">
               <div className="form-item">
                 <div className="form-input">
-                  <input className="input_Pw" type="password" id="password" name="password" placeholder="비밀번호" onChange={handlePasswordChange}  />
+                  <input className="input_Pw" type="password" id="password" name="password" placeholder="비밀번호" onChange={handlePasswordChange} onKeyDown={handleOnKeyPress}  />
                   <div className="errorTxt">{passwordError && <p className="error">{passwordError}</p>}</div>
                 </div>
               </div>
