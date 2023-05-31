@@ -1,14 +1,15 @@
-import Axios from 'axios';
+import Axios from '../AxiosController';
 import { useState, useEffect, useContext, useRef } from 'react';
 import '../App.css';
 import { AuthContext } from "../context/AuthContext";
 import MyButton from './MyButton';
 
-const Editor = ( props , { isEdit, modalClose }) =>{
+const Editor = (props) => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [partyTotal, setPartyTotal] = useState("");
-  const [tagName, setTagName] = useState("");
+  const [tagName, setTagName] = useState('');
+  const [tagList, setTagList] = useState([]);
   const [category, setCategory] = useState("");
   const { isResdata } = useContext(AuthContext);
   const contentRef = useRef();
@@ -16,83 +17,97 @@ const Editor = ( props , { isEdit, modalClose }) =>{
   const tagNameRef = useRef();
   const partyTotalRef = useRef();
 
-
   useEffect(() => {
     const config = {
-      headers:{
+      headers: {
         "Content-Type": "application/json",
       },
     };
 
-    if(props.idx !== undefined) { 
-    Axios.get(`http://localhost:8080/api/boards/${props.idx}`, config)
-      .then(res => {
-        setTitle(res.data.board.title, ...title);
-        setContent(res.data.board.content, ...content);
-        setPartyTotal(res.data.party, ...partyTotal);
-        setTagName(res.data.tags.tagName, ...tagName);
-      })
-      .catch(err => {
-        console.log(err);
-      });
+    if (props.idx !== undefined) {
+      Axios.get(`http://localhost:8080/api/boards/${props.idx}`, config)
+        .then(res => {
+          setTitle(res.data.board.title);
+          setContent(res.data.board.content);
+          setPartyTotal(res.data.party);
+          setTagName(res.data.tags.tagName);
+        })
+        .catch(err => {
+          console.log(err);
+        });
     }
-  },[]);
+  }, []);
 
   const handleSubmit = () => {
-    if(content.length < 1 && title.length < 1 && tagName.length < 1 && partyTotal < 1) {
+    if (content.length < 1 && title.length < 1 && tagName.length < 1 && partyTotal < 1) {
       titleRef.current.focus();
       contentRef.current.focus();
-      partyTotal.current.focus();
+      partyTotalRef.current.focus();
       tagNameRef.current.focus();
       return;
     }
-    if(window.confirm(isEdit? "게시글을 수정하시겠습니까?" : "새 게시물을 업로드 하시겠습니까?")) {     
-      if(!isEdit) {
+    if (window.confirm(props.isEdit ? "게시글을 수정하시겠습니까?" : "새 게시물을 업로드 하시겠습니까?")) {
+      if (!props.isEdit) {
         // 새 게시물 작성
         const data = {
-          'userId': isResdata,
-          'title': title,
-          'content': content,
-          'total': partyTotal,
-          'tagName': [
-            ...tagName
-          ],
+          userId: isResdata,
+          title: title,
+          content: content,
+          total: parseInt(partyTotal),
+          tagName: tagList,
         }
         console.log(data);
         Axios.post("http://localhost:8080/api/boards/write",
-        JSON.stringify(data),{
-          headers:{
+          JSON.stringify(data), {
+          headers: {
             "Content-Type": "application/json",
-          }, 
+          },
         })
-        .then(res => {
-          alert("게시물이 업로드 되었습니다.");
-          window.location.reload()
-          
-        })
-        .catch(err => {
-          alert("업로드 하는데 문제가 생겼습니다.");
-          console.log(err.response.data.message);
-          window.location.reload()
-        })
+          .then(res => {
+            alert("게시물이 업로드 되었습니다.");
+            window.location.reload()
+          })
+          .catch(err => {
+            alert("업로드 하는데 문제가 생겼습니다.");
+            console.log(err.response.data.message);
+            window.location.reload()
+          })
       } else {
         // 기존 게시글 수정
-
+        
       }
     }
   }
 
-  return(
+  const handleTagNameChange = (e) => {
+    setTagName(e.target.value);
+  };
+
+  const addTag = () => {
+    const newTag = tagName.trim();
+    if (newTag) {
+      setTagList((prevTagList) => [...prevTagList, newTag]);
+      setTagName('');
+    }
+  };
+
+  const deleteTag = (deletedTag) => {
+    setTagList((prevTagList) =>
+      prevTagList.filter((tag) => tag !== deletedTag)
+    );
+  };
+
+  return (
     <div className="modal">
       <div className="modal-content">
         <section>
           {
-            !isEdit ? 
-            <h2 htmlFor="title">새 게시글 쓰기</h2> :
-            <h2 htmlFor="title">게시글 수정하기</h2>
+            !props.isEdit ?
+              <h2 htmlFor="title">새 게시글 쓰기</h2> :
+              <h2 htmlFor="title">게시글 수정하기</h2>
           }
           <div className='title_div'>
-            <input 
+            <input
               id='title'
               type="text"
               className='title_input'
@@ -127,15 +142,23 @@ const Editor = ( props , { isEdit, modalClose }) =>{
           <div className='tags_div'>
             <label htmlFor="category">태그 :</label>
             <input
-              id='tags' 
+              id='tags'
               type="text"
               className='tags_input'
               placeholder='태그를 입력해주세요'
               ref={tagNameRef}
               value={tagName}
-              onChange={(e) => setTagName(e.target.value)}
+              onChange={handleTagNameChange}
               disabled={category !== "직접선택하기"}
             />
+            <button onClick={addTag}>추가</button>
+            <ul>
+              {tagList.map((tag, index) => (
+                <li key={index}>
+                  {tag} <button onClick={() => deleteTag(tag)}>X</button>
+                </li>
+              ))}
+            </ul>
             <select
               id="category"
               value={category}
@@ -161,20 +184,19 @@ const Editor = ( props , { isEdit, modalClose }) =>{
           </div>
           <div className='remove_box'>
             {
-              !isEdit ?
-              <div></div> :
-              <MyButton
-              text={'삭제하기'}
-              type={'negative'}
-              onClick={""} // 삭제하기 API 걸어야하는 부분
-            />
+              !props.isEdit ?
+                <div></div> :
+                <MyButton
+                  text={'삭제하기'}
+                  type={'negative'}
+                  onClick={""} // 삭제하기 API 걸어야하는 부분
+                />
             }
           </div>
         </section>
       </div>
     </div>
   )
-
 }
 
-export default Editor
+export default Editor;
