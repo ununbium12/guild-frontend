@@ -10,7 +10,6 @@ const Editor = (props) => {
   const [partyTotal, setPartyTotal] = useState("");
   const [tagName, setTagName] = useState('');
   const [tagList, setTagList] = useState([]);
-  const [category, setCategory] = useState("");
   const { isResdata } = useContext(AuthContext);
   const contentRef = useRef();
   const titleRef = useRef();
@@ -149,7 +148,6 @@ const Editor = (props) => {
               ref={tagNameRef}
               value={tagName}
               onChange={handleTagNameChange}
-              disabled={category !== "직접선택하기"}
             />
             <button onClick={addTag}>추가</button>
             <ul>
@@ -159,19 +157,6 @@ const Editor = (props) => {
                 </li>
               ))}
             </ul>
-            <select
-              id="category"
-              value={category}
-              onChange={(e) => setCategory(e.target.value)}
-            >
-              <option value="">태그 선택하기</option>
-              <option value="문화">문화</option>
-              <option value="게임">게임</option>
-              <option value="영화">영화</option>
-              <option value="여가">여가</option>
-              <option value="생활">생활</option>
-              <option value="직접선택하기">직접 선택하기</option>
-            </select>
           </div>
         </section>
         <section>

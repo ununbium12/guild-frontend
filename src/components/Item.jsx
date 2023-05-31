@@ -43,10 +43,10 @@ function Item (props) {
               onClick={onEditPostClick}
               text={"수정하기"}
             /> : ""}
-        </div>
+          </div>
         </div>
         {isPostOpen && (<Post setPostOpen={setPostOpen} board={board.boardId} />)}
-        {isEditPostOpen && (<EditPost setEditPostOpen={setEditPostOpen} />)}
+        {isEditPostOpen && (<EditPost setEditPostOpen={setEditPostOpen} isEdit={true} />)}
       </div>
     </div>
   );

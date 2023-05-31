@@ -12,6 +12,7 @@ function EditPost(props) {
   };
 
   const idx = props.idx;
+  const isEdit = props.isEdit;
 
   return (
     <div className="modelbox">
@@ -20,7 +21,7 @@ function EditPost(props) {
           X
         </button>
         <div className="contents">
-          <Editor idx={idx} />
+          <Editor idx={idx} isEdit={isEdit} />
         </div>
       </div>
     </div>
