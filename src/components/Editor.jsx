@@ -102,8 +102,8 @@ const Editor = (props) => {
         <div className='postContent'>
           {
             !props.isEdit ?
-              <h2 htmlFor="title">새 게시글 쓰기</h2> :
-              <h2 htmlFor="title">게시글 수정하기</h2>
+              <h2 className="title">새 게시글 쓰기</h2> :
+              <h2 className="title">게시글 수정하기</h2>
           }
           <div className='title_div'>
             <input
@@ -139,7 +139,6 @@ const Editor = (props) => {
             />
           </div>
           <div className='tags_div'>
-            <label htmlFor="category">태그 :</label>
             <input
               id='tags'
               type="text"
@@ -150,13 +149,15 @@ const Editor = (props) => {
               onChange={handleTagNameChange}
             />
             <button onClick={addTag}>추가</button>
-            <ul>
-              {tagList.map((tag, index) => (
-                <li key={index}>
-                  {tag} <button onClick={() => deleteTag(tag)}>X</button>
-                </li>
-              ))}
-            </ul>
+            <div className='addtag'>
+              <ul>
+                  {tagList.map((tag, index) => (
+                    <li key={index}>
+                      {tag} <button onClick={() => deleteTag(tag)}>X</button>
+                    </li>
+                  ))}
+                </ul>
+            </div>
           </div>
         </div>
         <div className='postBtn'>
