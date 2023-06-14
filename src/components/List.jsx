@@ -87,6 +87,7 @@ const List = () => {
       Axios.get(`http://localhost:8080/api/boards/list?page=0&size=10`)
         .then(res => {
           setList(res.data);
+          console.log(res.data);
         })
         .catch(err => {
           alert("에러가 발생했습니다.");

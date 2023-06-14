@@ -8,7 +8,21 @@ const Home = () => {
 
   return(
     <div className="HomeMain">
-      <List />
+      <div className="HomeContainer">
+        <List />
+      </div>
+        <div className="RankingContainer">
+          <div className="real-time-ranking">
+            <h2>실시간 인기 태그</h2>
+            <ol>
+              <li>게임</li>
+              <li>여가</li>
+              <li>서울</li>
+              <li>문화</li>
+              <li>생활</li>
+            </ol>
+          </div>
+        </div>
     </div>
   );
 };
