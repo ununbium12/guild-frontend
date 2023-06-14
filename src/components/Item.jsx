@@ -46,7 +46,7 @@ function Item (props) {
           </div>
         </div>
         {isPostOpen && (<Post setPostOpen={setPostOpen} board={board.boardId} />)}
-        {isEditPostOpen && (<EditPost setEditPostOpen={setEditPostOpen} isEdit={true} />)}
+        {isEditPostOpen && (<EditPost setEditPostOpen={setEditPostOpen} isEdit={true} board={board.boardId} />)}
       </div>
     </div>
   );

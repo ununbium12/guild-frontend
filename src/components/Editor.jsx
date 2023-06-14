@@ -8,7 +8,7 @@ const Editor = (props) => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [partyTotal, setPartyTotal] = useState("");
-  const [tagName, setTagName] = useState('');
+  const [tagName, setTagName] = useState("");
   const [tagList, setTagList] = useState([]);
   const { isResdata } = useContext(AuthContext);
   const contentRef = useRef();
@@ -29,7 +29,7 @@ const Editor = (props) => {
           setTitle(res.data.board.title);
           setContent(res.data.board.content);
           setPartyTotal(res.data.party);
-          setTagName(res.data.tags.tagName);
+          setTagName(res.data.tags.map(tag => tag.tagName));
         })
         .catch(err => {
           console.log(err);
@@ -77,11 +77,9 @@ const Editor = (props) => {
       }
     }
   }
-
+  console.log(props.idx + isResdata + "데이터 확인 부분")
   const handleRemove = () => {
     if (window.confirm('정말 삭제하시겠습니까?')) {
-
-
         const data = {
           boardId: props.idx,
           userId: isResdata,
