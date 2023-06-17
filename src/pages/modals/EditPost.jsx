@@ -11,7 +11,7 @@ function EditPost(props) {
     props.setEditPostOpen(false);
   };
 
-  const idx = props.idx;
+  const idx = props.board;
   const isEdit = props.isEdit;
 
   return (

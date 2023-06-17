@@ -344,17 +344,49 @@ button[type="submit"]:hover {
 
 
 
-/*리스트(list)*/
-.HomeMain{
+/*리스트(list), 랭킹(ranking)*/
+.HomeMain {
+  display: flex;
+  justify-content: space-between;
+}
+
+.HomeContainer {
   width: 70%;
   height: 800px;
   background-color: #e9e8e8;
   padding: 0px 25px;
-  overflow:scroll;
+  overflow: scroll;
 }
-.listCotents{
-  padding-top: 0px;
+
+.RankingContainer {
+  width: 30%;
+  height: 800px;
+  background-color: #f7f7f7;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
 }
+
+.real-time-ranking {
+  margin-left: 15px;
+  font-size: 18px;
+  font-weight: bold;
+  border-bottom: solid 2px #7ca145;;
+  padding-bottom: 10px;
+}
+
+.real-time-ranking ol {
+  list-style-type: decimal;
+  margin: 10px 0 0 0;
+  padding-left: 20px;
+}
+
+.real-time-ranking li {
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
 
 /*로그인(login)*/
 .contents_login {
