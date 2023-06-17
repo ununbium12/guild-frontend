@@ -84,7 +84,7 @@ const Editor = (props) => {
           total: parseInt(partyTotal),
           tagId: tagId,
           tagName: tagList,
-        };        
+        };      
         Axios.put("http://localhost:8080/api/boards/update", JSON.stringify(data), {
           headers: {
             "Content-Type": "application/json",
@@ -130,20 +130,31 @@ const Editor = (props) => {
   const addTag = () => {
     const newTag = tagName.trim();
     if (newTag) {
-      setTagList((prevTagList) => [...prevTagList, newTag]);
-      setTagId((prevTagId) => [...prevTagId, -1]); // -1은 아직 ID가 없는 새로운 태그를 나타냅니다
+      // 기존에 추가된 태그가 있는지 확인
+      const existingTagIndex = tagList.findIndex(tag => tag === newTag);
+      if (existingTagIndex !== -1) {
+        // 이미 추가된 태그인 경우, 아무 작업도 수행하지 않고 함수 종료
+        return;
+      }
+      // 새로운 태그 추가
+      setTagList(prevTagList => [...prevTagList, newTag]);
+      setTagName(prevTagName => [...prevTagName, -1]); // -1은 아직 ID가 없는 새로운 태그를 나타냅니다
       setTagName('');
     }
-  };  
-
+  };
+  
   const deleteTag = (deletedTag) => {
-    setTagList((prevTagList) =>
-      prevTagList.filter((tag) => tag !== deletedTag)
-    );
-    setTagId((prevTagId) =>
-      prevTagId.filter((_, index) => index !== deletedTag)
-    );
-  };   
+    const deletedIndex = tagList.findIndex(tag => tag === deletedTag);
+    if (deletedIndex !== -1) {
+      // 태그가 존재하는 경우에만 삭제 작업 수행
+      setTagList(prevTagList =>
+        prevTagList.filter((_, index) => index !== deletedIndex)
+      );
+      setTagId(prevTagId =>
+        prevTagId.filter((_, index) => index !== deletedIndex)
+      );
+    }
+  };  
 
   return (
     <div className="modal">
