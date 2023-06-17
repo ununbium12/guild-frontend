@@ -18,7 +18,7 @@ const UserList = () => {
     if(isResdata !== "") {
       Axios.get(`http://localhost:8080/api/boards/list/${isResdata}`)
         .then(res =>{
-          setList(res.data);
+          setList(res.data.data.content);
         })
         .catch(err =>{
           alert("에러 발생")
@@ -38,7 +38,7 @@ const UserList = () => {
             로딩 중...
           </div> :
           <div>
-            {list.map((it) => (<Item key={it.board.boardId} {...it}/>))}
+            {list !== null && list.map((it) => (<Item key={it.board.boardId} {...it}/>))}
           </div>
         }
       </div>
