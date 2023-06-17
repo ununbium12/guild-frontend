@@ -52,13 +52,13 @@ const Header = () => {
         <div className="right_col">
           <div className="login_user">
             {
-              isResdata !== ""
+              isResdata !== null
               ? <p>[{isResdata}]님, 환영합니다.</p>
               : <div>로그인 해주십시오.</div>
             }
           </div>
           {
-            isResdata !== ""
+            isResdata !== null
             ? <MyButton
               type={'logout'}
               onClick={handleLogoutClick}

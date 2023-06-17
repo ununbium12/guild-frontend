@@ -10,11 +10,13 @@ const Editor = (props) => {
   const [partyTotal, setPartyTotal] = useState("");
   const [tagName, setTagName] = useState("");
   const [tagList, setTagList] = useState([]);
+  const [tagId, setTagId] = useState([]);
   const { isResdata } = useContext(AuthContext);
   const contentRef = useRef();
   const titleRef = useRef();
   const tagNameRef = useRef();
   const partyTotalRef = useRef();
+
 
   useEffect(() => {
     const config = {
@@ -26,10 +28,12 @@ const Editor = (props) => {
     if (props.idx !== undefined) {
       Axios.get(`http://localhost:8080/api/boards/${props.idx}`, config)
         .then(res => {
-          setTitle(res.data.board.title);
-          setContent(res.data.board.content);
-          setPartyTotal(res.data.party);
-          setTagName(res.data.tags.map(tag => tag.tagName));
+          setTitle(res.data.data.board.title);
+          setContent(res.data.data.board.content);
+          setPartyTotal(res.data.data.party.total);
+          console.log(res.data.data.tags);
+          setTagList(res.data.data.tags.map(tag => tag.tagName));
+          setTagId(res.data.data.tags.map(tag => tag.tagId));
         })
         .catch(err => {
           console.log(err);
@@ -55,7 +59,6 @@ const Editor = (props) => {
           total: parseInt(partyTotal),
           tagName: tagList,
         }
-        console.log(data);
         Axios.post("http://localhost:8080/api/boards/write",
           JSON.stringify(data), {
           headers: {
@@ -73,7 +76,29 @@ const Editor = (props) => {
           })
       } else {
         // 기존 게시글 수정
-        
+        const data = {
+          boardId: props.idx,
+          userId: isResdata,
+          title: title,
+          content: content,
+          total: parseInt(partyTotal),
+          tagId: tagId,
+          tagName: tagList,
+        };        
+        Axios.put("http://localhost:8080/api/boards/update", JSON.stringify(data), {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        })
+        .then(res => {
+          alert("게시물이 수정되었습니다.");
+          window.location.reload();
+        })
+        .catch(err => {
+          alert("게시물 수정 중 문제가 발생했습니다.");
+          console.log(err.response.data.message);
+          window.location.reload();
+        });
       }
     }
   }
@@ -106,15 +131,19 @@ const Editor = (props) => {
     const newTag = tagName.trim();
     if (newTag) {
       setTagList((prevTagList) => [...prevTagList, newTag]);
+      setTagId((prevTagId) => [...prevTagId, -1]); // -1은 아직 ID가 없는 새로운 태그를 나타냅니다
       setTagName('');
     }
-  };
+  };  
 
   const deleteTag = (deletedTag) => {
     setTagList((prevTagList) =>
       prevTagList.filter((tag) => tag !== deletedTag)
     );
-  };
+    setTagId((prevTagId) =>
+      prevTagId.filter((_, index) => index !== deletedTag)
+    );
+  };   
 
   return (
     <div className="modal">
