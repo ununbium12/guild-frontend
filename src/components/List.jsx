@@ -35,7 +35,7 @@ const List = () => {
       if (sortType === 'latest') {
         Axios.get(`http://localhost:8080/api/boards/list?page=0&size=10`)
         .then(res => {
-          setList(res.data);
+          setList(res.data.data.content);
         })
         .catch(err => {
           alert("An error has occurred");
@@ -44,7 +44,7 @@ const List = () => {
       } else {
         Axios.get(`http://localhost:8080/api/boards/list/ASC?page=0&size=10`)
         .then(res => {
-          setList(res.data);
+          setList(res.data.data.content);
         })
         .catch(err => {
           alert("An error has occurred");
@@ -55,7 +55,7 @@ const List = () => {
       if (tonType === 'name') {
         Axios.get(`http://localhost:8080/api/boards/search/${search}`)
         .then(res => {
-          setList(res.data);
+          setList(res.data.data.content);
         })
         .catch(err => {
           alert("An error has occurred");
@@ -64,7 +64,7 @@ const List = () => {
       } else if (tonType === 'tag') {
         Axios.get(`http://localhost:8080/api/boards/searchByTagId/${search}`) // 현재 태그 검색이 태그아이디로 검색이 되는 문제가 있음
         .then(res => {
-          setList(res.data);
+          setList(res.data.data.content);
         })
         .catch(err => {
           alert("An error has occurred");
@@ -86,8 +86,8 @@ const List = () => {
     if (sortType === 'latest') {
       Axios.get(`http://localhost:8080/api/boards/list?page=0&size=10`)
         .then(res => {
-          setList(res.data);
-          console.log(res.data);
+          setList(res.data.data.content);
+          console.log(res.data.data.content);
         })
         .catch(err => {
           alert("에러가 발생했습니다.");
@@ -96,7 +96,7 @@ const List = () => {
     } else {
       Axios.get(`http://localhost:8080/api/boards/list/ASC?page=0&size=10`)
         .then(res => {
-          setList(res.data);
+          setList(res.data.data.content);
         })
         .catch(err => {
           alert("에러가 발생했습니다.");
@@ -138,7 +138,7 @@ const List = () => {
             로딩 중...
           </div> :
           <div>
-            {list.map((it) => (<Item key={it.board.boardId} {...it}/>))}
+            {list !== null && list.map((it) => (<Item key={it.board.boardId} {...it}/>))}
           </div>
         }
       </div>

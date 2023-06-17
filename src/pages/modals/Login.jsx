@@ -63,19 +63,18 @@ function Login(props) {
         .post("http://localhost:8080/api/users/login", { userId, password })
         .then((res) => {
           if (res && res.data) {
-            if (res.data === 0 || res.data === 1) {
-              // 로그인이 실패한 경우
-              console.log(res.data);
-              alert("입력한 정보가 올바르지 않습니다.");
-            } else {
+            if (res.data.error === null || res.data.data !== null) {
               // 로그인이 성공한 경우
               login();
               window.location.reload();
               alert("로그인 되었습니다.");
+            } else {
+              // 로그인이 실패한 경우
+              console.log(res.data.error.errorId);
+              alert("입력한 정보가 올바르지 않습니다.");
             }
           } else {
             // 응답이나 데이터가 정의되지 않은 경우 처리
-            console.log(res.data.userId);
             console.log(res.data.error.message);
             alert("로그인 중 오류가 발생했습니다.1");
           }          

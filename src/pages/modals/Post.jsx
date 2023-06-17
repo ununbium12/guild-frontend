@@ -29,7 +29,7 @@ function Post(props) {
         alert("생성되지 않은 개시물 입니다.");        
       }
       setData([res.data]);
-      console.log(res.data)
+      console.log(res.data + "데이터 확인합니다")
     })
     .catch(err => {
       alert("에라가 발생했습니다.");
