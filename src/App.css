@@ -89,7 +89,7 @@ body{
 /*모달박스*/
 .modelbox > .modelContent {
   width: 600px;
-  height: 450px;
+  height: 550px;
   border-radius: 15px;
   /*background-image: url('../public/assets/scroll.jpg');*/
   background-color: whitesmoke;
@@ -97,6 +97,7 @@ body{
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+
 }
 
 .modelbox > .modelContent > .closeModel {
@@ -135,15 +136,13 @@ body{
   font-weight: 600;
 
 }
+.modelbox > .modelContent > .btn_edit {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+}
 
 
-/* post 모달*/
-.modal > .postModal> .postBtn{
-  padding-left: 80%;
-}
-.modal > .postModal> .addtag{
-  background-color: red;
-}
 
 
 
@@ -179,7 +178,21 @@ body{
 /*모달에딧(Editor)*/
 
 
+.modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
 
+.modal .modal-content {
+  width: 100%;
+  background-color: whitesmoke;
+  border-radius: 15px;
+  padding: 20px;
+  box-sizing: border-box;
+
+}
 .modal form {
   display: flex;
   flex-direction: column;
@@ -230,6 +243,58 @@ button[type="submit"]:hover {
   background-color: darkblue;
 }
 
+.modal > .postModal > .postBtn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+
+.modal > .postModal > .postBtn > .control_box {
+  margin-top: 10px;
+  flex-grow: 1;
+  text-align: right;
+}
+
+.modal > .postModal > .postBtn > .remove_box {
+  margin-top: 10px;
+  flex-grow: 0;
+  margin-left: 10px;
+}
+
+/*모달박스 태그추가*/
+
+.modal > .postModal > .addtag {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 5px;
+  margin-top: 10px;
+}
+
+.modal > .postModal > .addtag > ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.modal > .postModal > .addtag > ul > li {
+  display: inline-block;
+  background-color: red;
+  padding: 5px;
+  border-radius: 5px;
+  color: white;
+}
+
+.modal > .postModal > .addtag > ul > li > button {
+  margin-left: 5px;
+  background-color: transparent;
+  border: none;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
 
 
 /*헤더(header)*/
@@ -545,7 +610,7 @@ button[type="submit"]:hover {
 .postContent>.title_div,
 .postContent>.content_div,
 .postContent>.partyTotal_div,
-.postContent>.tags_div
+.postContent>.tag> .tags_div
  {
   display: flex;
   align-items: center;
@@ -555,13 +620,56 @@ button[type="submit"]:hover {
 
 .postContent>.title_div>input,
 .postContent>.partyTotal_div>input,
-.postContent>.tags_div> input{
+.postContent>.tag>.tags_div> input{
   width: 60%;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 15px;
   outline: none;
 }
+.tags_div {
+  display: flex;
+  align-items: center;
+}
+
+.tags_input {
+  margin-right: 5px;
+}
+
+.addtag {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Align items to the left */
+  gap: 5px; /* Add some spacing between the elements */
+  margin-left: 30px;
+}
+
+.addtag ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.addtag li {
+  display: inline-block;
+  background-color: #929292;
+  padding: 5px;
+  border-radius: 5px;
+  color: black;
+  margin-right: 5px;
+  margin-top: 5px;
+}
+
+.addtag li button {
+  background-color: transparent;
+  border: none;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+
+
 .postContent>.content_div> textarea{
   width: 60%;
   height: 150px;

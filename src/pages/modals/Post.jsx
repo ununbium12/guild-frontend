@@ -10,6 +10,8 @@ function Post(props) {
   const [data, setData] = useState([]);
   const { isResdata } = useContext(AuthContext);
 
+  const board = props.board;
+
   Axios.defaults.withCredentials = true; //axios 사용 컴포넌트 마다 한번씩 붙여넣을 것
 
   const handleClose = () => {
@@ -66,16 +68,16 @@ function Post(props) {
               ))}
             </div>
           </div>
-          { isResdata !== null 
+          { isResdata === null 
             ? <div></div> 
             :
             <div className="btn_edit">
-              <MyButton onClick={onEditPostClick} text={"수정하기"} />
+              <MyButton type={'editPost'} onClick={onEditPostClick} text={"수정하기"} />
             </div>
           }
         </div>
         {isEditPostOpen && (
-          <EditPost setEditPostOpen={setEditPostOpen} />
+          <EditPost setEditPostOpen={setEditPostOpen} isEdit={true} board={board.boardId}/>
         )}
       </div>
       )

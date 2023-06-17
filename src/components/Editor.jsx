@@ -198,25 +198,28 @@ const Editor = (props) => {
               min={1}
             />
           </div>
-          <div className='tags_div'>
-            <input
-              id='tags'
-              type="text"
-              className='tags_input'
-              placeholder='태그를 입력해주세요'
-              ref={tagNameRef}
-              value={tagName}
-              onChange={handleTagNameChange}
-            />
-            <button onClick={addTag}>추가</button>
+          <div className='tag'>
+            <div className='tags_div'>
+              <input
+                id='tags'
+                type="text"
+                className='tags_input'
+                placeholder='태그를 입력해주세요'
+                ref={tagNameRef}
+                value={tagName}
+                onChange={handleTagNameChange}
+              />
+              <button onClick={addTag}>추가</button>
+            </div>
             <div className='addtag'>
               <ul>
-                  {tagList.map((tag, index) => (
-                    <li key={index}>
-                      {tag} <button onClick={() => deleteTag(tag)}>X</button>
-                    </li>
-                  ))}
-                </ul>
+                {tagList.map((tag, index) => (
+                  <li key={index}>
+                    <span>{tag}</span>
+                    <button onClick={() => deleteTag(tag)}>X</button>
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
         </div>
