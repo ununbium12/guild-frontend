@@ -120,7 +120,7 @@ const Editor = (props) => {
 
   return (
     <div className="modal">
-      <div className="modal-content">
+      <div className="modal-content postModal">
         <div className='postContent'>
           {
             !props.isEdit ?

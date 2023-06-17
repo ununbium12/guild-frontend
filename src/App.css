@@ -135,6 +135,18 @@ body{
   font-weight: 600;
 
 }
+
+
+/* post 모달*/
+.modal > .postModal> .postBtn{
+  padding-left: 80%;
+}
+.modal > .postModal> .addtag{
+  background-color: red;
+}
+
+
+
 /*모달박스 태그 스타일*/
 .modelbox > .modelContent > .postContents> .tags {
   margin: 10px 30px;
@@ -202,6 +214,8 @@ body{
   border: 1px solid black;
 }
 
+
+
 button[type="submit"] {
   background-color: blue;
   color: white;
@@ -215,6 +229,8 @@ button[type="submit"] {
 button[type="submit"]:hover {
   background-color: darkblue;
 }
+
+
 
 /*헤더(header)*/
 .header_main{
