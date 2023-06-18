@@ -4,6 +4,7 @@ import Post from "../pages/modals/Post";
 import '../App.css';
 import EditPost from "../pages/modals/EditPost";
 import { AuthContext } from "../context/AuthContext";
+import Axios from "../AxiosController"
 
 function Item (props) {
 
@@ -27,6 +28,36 @@ function Item (props) {
 
   const strDate = new Date(parseInt(board.writeDate)).toLocaleDateString();
 
+  const JoinParty = () => {
+    if(isResdata === null){
+      alert("로그인을 해주세요.");
+      window.location.reload();
+    }else{
+      const data = {
+        partyId: board.partyId, 
+        userId: isResdata, 
+      };
+  
+  
+      Axios.post("/api/party/join", JSON.stringify(data), {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+        .then((response) => {
+          
+          console.log("Successfully joined the party", response.data);
+          alert("파티참가 완료되었습니다.");
+          window.location.reload();
+        })
+        .catch((error) => {
+  
+          console.error("Error joining the party", error);
+        });
+    }
+    
+  };
+
   return (
     <div className="contents">
       <div className="Item">
@@ -42,7 +73,10 @@ function Item (props) {
               type={'editPost'}
               onClick={onEditPostClick}
               text={"수정하기"}
-            /> : ""}
+            /> : 
+              <MyButton type={'joinParty'}
+              onClick={JoinParty} 
+              text={"파티참가"}/> }
           </div>
         </div>
         {isPostOpen && (<Post setPostOpen={setPostOpen} board={board.boardId} />)}

@@ -340,7 +340,8 @@ button[type="submit"]:hover {
 .MyButton_login,
 .MyButton_logout,
 .MyButton_mypage,
-.MyButton_editPost{
+.MyButton_editPost,
+.MyButton_joinParty{
   background-color:transparent;
   color: black;
 }
@@ -351,7 +352,8 @@ button[type="submit"]:hover {
 .MyButton_login:hover,
 .MyButton_logout:hover,
 .MyButton_mypage:hover,
-.MyButton_editPost:hover{
+.MyButton_editPost:hover,
+.MyButton_joinParty{
   background-color: rgba(30, 39, 33, 0.2);
   color: white;
 }
@@ -367,7 +369,17 @@ button[type="submit"]:hover {
   color: white;
   font-weight: 700;
 }
-
+.MyButton_joinParty{
+  border-radius: 25px;
+  background-color: #e6d544;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+.MyButton_joinParty:hover{
+  background-color: #bdba1b;
+  color: white;
+  font-weight: 700;
+}
 
 
 /*아이템(item)*/

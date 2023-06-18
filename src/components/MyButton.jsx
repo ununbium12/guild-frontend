@@ -2,7 +2,7 @@ import '../App.css';
 
 const MyButton = ({text, type, onClick}) => {
 
-  const btnType = ['positive', 'negative', 'login','mypage', 'logout', 'editPost'].includes(type)? type:'default';
+  const btnType = ['positive', 'negative', 'login','mypage', 'logout', 'editPost', 'joinParty'].includes(type)? type:'default';
 
   return (
     <button 

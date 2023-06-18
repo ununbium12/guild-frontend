@@ -47,7 +47,7 @@ const Register  = (props) => {
     if (inputs.userId !== "") {
       axios.get(`http://localhost:8080/api/users/isIdDup/${inputs.userId}`)
         .then((res) => {
-          setUserId(res.data);
+          setUserId(res.data.data);
         })
         .catch((err) => {
           console.log(err.response.data.message);

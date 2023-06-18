@@ -39,6 +39,8 @@ function Post(props) {
     });
   },[]);
 
+
+
   // 첫 배열이 무조건 [] 공백으로 찍혀서 만약 배열이 빈 공백일 때는 문자열 공백을 넣어서 오류가 안나도록 안나오게 만들었다.
   const boardTitle = data.length > 0 ? data[0].board.title : "";
   const boardContent = data.length > 0 ? data[0].board.content : "";
@@ -69,7 +71,7 @@ function Post(props) {
             </div>
           </div>
           { isResdata === null 
-            ? <div></div> 
+            ?""
             :
             <div className="btn_edit">
               <MyButton type={'editPost'} onClick={onEditPostClick} text={"수정하기"} />
