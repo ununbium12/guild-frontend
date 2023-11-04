@@ -63,9 +63,6 @@ body{
 
 }
 
-
-
-
 /*푸터*/
 .footer-frame{
   width: 100%;
@@ -142,10 +139,6 @@ body{
   right: 20px;
 }
 
-
-
-
-
 /*모달박스 태그 스타일*/
 .modelbox > .modelContent > .postContents> .tags {
   margin: 10px 30px;
@@ -176,7 +169,6 @@ body{
 
 
 /*모달에딧(Editor)*/
-
 
 .modal {
   display: flex;
@@ -327,6 +319,8 @@ button[type="submit"]:hover {
   cursor: pointer;
 }
 .right_col {
+  margin-top: 10px;
+  margin-left: 10px;
   display: flex;
   align-items: center;
 }
@@ -417,9 +411,6 @@ button[type="submit"]:hover {
 .contents .Item .btn_wrapper {
   margin-left: 85%;
 }
-
-
-
 
 /*리스트(list), 랭킹(ranking)*/
 .HomeMain {
@@ -524,8 +515,6 @@ button[type="submit"]:hover {
 .btn_Login{
   margin-right: 10px;
 }
-
-
 
 /*회원가입(Register)*/
 .modelbox> .registerBox{
@@ -644,6 +633,20 @@ button[type="submit"]:hover {
   align-items: center;
 }
 
+.tags_div > button {
+  border-radius: 25px;
+  background-color: #7ca145;
+  font-weight: 700;
+  color: white;
+  padding: 5px 10px 5px 10px;
+}
+
+.tags_div > button:hover{
+  background-color: #5c7732;
+  color: white;
+  font-weight: 700;
+}
+
 .tags_input {
   margin-right: 5px;
 }
@@ -680,12 +683,24 @@ button[type="submit"]:hover {
   cursor: pointer;
 }
 
-
-
 .postContent>.content_div> textarea{
   width: 60%;
   height: 150px;
   resize: none;
 }
 
+/* 검색창 */
 
+.left_col > .ControlMenu {
+  width: 200px;
+  height: 20px;
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+.searchSubmit > input {
+  width: 500px;
+  height: 22px;
+  margin: 10px;
+  border: solid 2px #5c7732;
+}

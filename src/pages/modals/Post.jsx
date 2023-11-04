@@ -31,7 +31,6 @@ function Post(props) {
         alert("생성되지 않은 개시물 입니다.");        
       }
       setData([res.data.data]);
-      console.log(res.data.data);
     })
     .catch(err => {
       alert("에라가 발생했습니다.");
@@ -43,12 +42,14 @@ function Post(props) {
 
   // 첫 배열이 무조건 [] 공백으로 찍혀서 만약 배열이 빈 공백일 때는 문자열 공백을 넣어서 오류가 안나도록 안나오게 만들었다.
   const boardTitle = data.length > 0 ? data[0].board.title : "";
+  const boardUserId = data.length > 0 ? data[0].board.userId : "";
   const boardContent = data.length > 0 ? data[0].board.content : "";
   const partyTotal = data.length > 0 ? data[0].party.total : "";
   const partyCurrent = data.length > 0 ? data[0].party.current : "";
   const Tags = data.length > 0 ? data[0].tags : [];
   const boardViews = data.length > 0 ? data[0].board.views : "";
   const party = data.length > 0 ? data[0].party.partyId : "";
+
 
   if(data == null) {
     return <div className="Loding">로딩 중...</div>
@@ -70,7 +71,7 @@ function Post(props) {
               ))}
             </div>
           </div>
-          { isResdata === null 
+          { isResdata !== boardUserId
             ?""
             :
             <div className="btn_edit">

@@ -13,9 +13,6 @@ const Header = () => {
   const [isModalOpen, setModalOpen] = useState(false);
   const { isResdata } = useContext(AuthContext);
 
-  console.log(isResdata);
-
-
   useEffect(() => {
     setIsMyPage(location.pathname === '/myPage');
   }, [location]);

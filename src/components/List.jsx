@@ -87,7 +87,6 @@ const List = () => {
       Axios.get(`http://localhost:8080/api/boards/list?page=0&size=10`)
         .then(res => {
           setList(res.data.data.content);
-          console.log(res.data.data.content);
         })
         .catch(err => {
           alert("에러가 발생했습니다.");
@@ -130,8 +129,10 @@ const List = () => {
               ))}
             </select>
           </div>
-          <input type="text" value={search} placeholder="파티 검색하기" onChange={onChangeSearch} />
-          <button type="submit">검색</button>
+          <div className="searchSubmit">
+            <input type="text" value={search} placeholder="파티 검색하기" onChange={onChangeSearch} />
+            <button type="submit">검색</button>
+          </div>
         </form>
         { list === null ?
           <div>
@@ -157,7 +158,7 @@ const List = () => {
           </select>
         </div>
         <div className="right_col">
-          <MyButton 
+          <MyButton
             type={'positive'}
             text={'새 개시물 쓰기'}
             onClick={onClick}

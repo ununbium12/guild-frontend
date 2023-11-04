@@ -31,7 +31,6 @@ const Editor = (props) => {
           setTitle(res.data.data.board.title);
           setContent(res.data.data.board.content);
           setPartyTotal(res.data.data.party.total);
-          console.log(res.data.data.tags);
           setTagList(res.data.data.tags.map(tag => tag.tagName));
           setTagId(res.data.data.tags.map(tag => tag.tagId));
         })
@@ -102,7 +101,6 @@ const Editor = (props) => {
       }
     }
   }
-  console.log(props.idx + isResdata + "데이터 확인 부분")
   const handleRemove = () => {
     if (window.confirm('정말 삭제하시겠습니까?')) {
         const data = {

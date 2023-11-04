@@ -24,7 +24,6 @@ function Item (props) {
 
   const tags = props.tags;
   const tagNames = tags.map(tag => "#" + tag.tagName).join('  ');
-  console.log(tagNames);
 
   const strDate = new Date(parseInt(board.writeDate)).toLocaleDateString();
 

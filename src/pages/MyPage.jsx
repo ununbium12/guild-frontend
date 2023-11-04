@@ -16,14 +16,6 @@ const MyPage = () => {
     }
   },[isResdata, navigate])
 
-  const userOut = ()=>{
-
-  };
-
-
-
-  console.log(isResdata + "마이페이지 부분")
-
   return(
     <div>
       <div className="pages container clearfix">

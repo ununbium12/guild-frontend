@@ -1,10 +1,7 @@
-import React, { useContext } from "react";
 import "../../App.css";
-import { AuthContext } from "../../context/AuthContext";
 import Editor from "../../components/Editor";
 
 function EditPost(props) {
-  const { isResdata } = useContext(AuthContext);
 
   // 모달 끄기
   const handleClose = () => {
